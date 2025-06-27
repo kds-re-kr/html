@@ -1,0 +1,193 @@
+
+
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<title>KDS RuleBook 🚀GO!</title>
+<style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f6f8fa;
+      margin: 0;
+      padding: 40px;
+    }
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .card {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      width: 15%;
+      min-width: 140px;
+      padding: 24px;
+      transition: 0.3s;
+    }
+    .card:hover {
+      box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+    }
+    .emoji {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+    .title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #2c3e50;
+    }
+    .desc {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 10px;
+    }
+    ul {
+      padding-left: 18px;
+      font-size: 14px;
+      color: #333;
+    }
+    ul li {
+      margin-bottom: 6px;
+    }
+    ul li a {
+      text-decoration: none;
+      color: #007acc;
+    }
+    ul li a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+<h1>KDS RuleBook 🚀GO!</h1>
+<!-- 🔍 검색창 삽입 -->
+<div style="text-align: center; margin-top: 10px; margin-bottom: 30px;">
+<input id="searchInput" placeholder="검색어를 입력하세요" style="padding: 10px; width: 280px; font-size: 14px; border: 1px solid #ccc; border-radius: 6px;" type="text"/>
+<button style="padding: 10px 12px; margin-left: 6px; font-size: 14px; background-color: #007acc; color: white; border: none; border-radius: 6px; cursor: pointer;">
+    🔍
+  </button>
+<button onclick="document.getElementById('popup').style.display='block'" style="padding: 10px 12px; margin-left: 6px; font-size: 14px; background-color: #f39c12; color: white; border: none; border-radius: 6px; cursor: pointer;">
+    📘 사용법 안내
+  </button>
+<a href="https://drive.google.com/drive/folders/1rMe8bIJq6dr8Eo-Uw4ii9Ot1ce6tH75v?usp=drive_link" style="margin-left: 10px; font-size: 14px; color: #2c3e50; text-decoration: none; background-color: #ecf0f1; padding: 10px 14px; border-radius: 6px; display: inline-block;" target="_blank">📂 전체 규정 폴더 바로가기</a></div>
+<div id="popup" style="display:none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; max-width: 600px; background-color: white; border: 1px solid #ccc; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 9999; padding: 20px; font-size: 14px; text-align: left;">
+<h3>KDS RuleBook 🚀GO! 사용 방법</h3>
+<p>업무 중 “이럴 땐 어떤 규정을 봐야 하지?” 하고 고민된 적 있으셨나요?<br/>이제는 더 이상 규정 찾느라 헤매지 마세요.</p>
+<p><strong>KDS RuleBook 🚀GO!</strong>는<br/>누구나 손쉽게 회사의 주요 규정들을 찾아볼 수 있도록 만든 규정 바로가기 대시보드입니다.</p>
+<p><strong>📌 주요 기능</strong><br/>
+<strong>1. 분야별 규정 모아보기</strong><br/>
+  “조직, 복무, 사업관리, 사내 시스템” 등<br/>
+  각 규정이 유형별로 보기 쉽게 정리되어 있어요. 원하는 규정을 찾아 클릭만 하면 됩니다!</p>
+<p><strong>2. 키워드 검색 지원</strong><br/>
+  ①정확한 규정 이름이 생각나지 않는다면?<br/>
+  ②또는 특정 내용이 알고 싶은데 어느 규정에 들어있는지 모르겠다면?<br/>
+ 떠오르는 키워드만 입력해보세요.<br/>
+예를 들어, ‘경조’라고 입력하면 ‘경조휴가’가 포함된 취업규칙을 보여줍니다!</p>
+<p><strong>🔍 사용 방법</strong><br/>
+  1. 상단 검색창에 키워드를 입력합니다. (예: “출장”, “휴가”, “정보보안”)<br/>
+  2. 관련된 규정 목록이 자동으로 필터링됩니다.<br/>
+  3. 규정 이름을 클릭하면 바로 내용을 확인할 수 있습니다.</p>
+<p><strong>✔️ 규정은 계속 업데이트됩니다.</strong><br/>
+  사용 중 개선 아이디어가 있다면 기획관리실로 알려주세요!</p>
+<div style="text-align: center; margin-top: 20px;">
+<button onclick="document.getElementById('popup').style.display='none'" style="padding: 8px 16px; background-color: #ccc; border: none; border-radius: 6px; cursor: pointer;">닫기</button>
+</div>
+</div>
+<div class="container">
+<div class="card">
+<div class="emoji">🙋</div>
+<div class="title">인사·복무</div>
+<div class="desc">취업규칙, 인사규정, 안전관리, 복리후생, 재택근무 등</div>
+<ul>
+<li data-keywords="채용, 임용, 수습기간, 제출서류, 복무, 성희롱, 품위유지, 사원증, 비상출근, 결근, 지각, 조퇴, 외출, 출장업무, 공민권, 근로조건, 근로시간, 시차출퇴근제, 재택근무, 휴게시간, 연장근무, 야간 및 휴일근로, 육아시간, 주휴일, 정휴일, 휴일대체, 연차유급휴가, 연차휴가, 생리휴가, 임산부의 보호, 태아검진, 배우자 출산휴가, 난임치료휴가, 병가, 공가, 경조휴가, 대체휴가, 특별휴가, 육아휴직, 육아기 근로시간 단축, 가족돌봄, 복직, 임금, 연봉계약, 임금산정, 상여금, 퇴직금, 정년, 해고, 표창, 징계, 안전수칙, 건강진단, 건강검진, 직장내괴롭힘금지, 재해보상"><a href="https://drive.google.com/file/d/1GZcA9-KogQ3qr8XUxQUw3nq1Md1AFwlG/view?usp=drive_link" target="_blank"> [규정] 취업규칙</a></li>
+<li data-keywords="인사위원회, 근무평가, 승진, 교육훈련, 임용 자격기준"><a href="https://drive.google.com/file/d/1Z3jCGc-Z5fFj52Q7lghCULFUtI21tYI1/view?usp=drive_link" target="_blank"> [규정] 인사규정</a></li>
+<li><a href="https://drive.google.com/file/d/15e-wW_v90Klj4NkjBXQPnoCunSO_7q9i/view?usp=drive_link/view?usp=drive_link" target="_blank">[규정] 경조휴가 및 경조금 규정</a></li>
+<li><a href="https://drive.google.com/file/d/1_5-ADtxDaTATqlyQKnzAPDyaJlFzKEe7/view?usp=drive_link" target="_blank">[규정] 대체휴가 규정</a></li>
+<li><a href="https://drive.google.com/file/d/1eJip-8E7jvxAVBK1_nPYLfYgTCBClJki/view?usp=drive_link" target="_blank">[규정] 성희롱·성폭력 예방 규정</a></li>
+<li><a href="https://drive.google.com/file/d/1YtH3z_-BlKEp-dOOBHGyQQpZ9fw3gyZO/view?usp=drive_link" target="_blank">[규정] 안전관리 규정</a></li>
+<li><a href="https://drive.google.com/file/d/1KCl7Azm2u3T3VSJ7I6JOOQwupZ3nPs7E/view?usp=drive_link" target="_blank">[규정] 출장여비 규정</a></li>
+<li><a href="https://drive.google.com/file/d/1naXu51Hmj4ltAWDPV4GIJE5c-MwlGe31/view?usp=drive_link" target="_blank">[규정] 해외 장기파견인력 복무규정</a></li>
+<li><a href="https://drive.google.com/file/d/1zOUfNNsV7j5DeiCmD8VUjAB7npUjyAHm/view?usp=drive_link" target="_blank">[지침] 근무수칙</a></li>
+<li><a href="https://drive.google.com/file/d/16Wkx91a18UerCJTitoeS-3FTfsfyabdn/view?usp=drive_link/view?usp=drive_link" target="_blank">[지침] 온보딩 프로그램</a></li>
+<li><a href="https://drive.google.com/file/d/1-uyFW7rysCdaTHT6xvaaY3z6FfbTeRYB/view?usp=drive_link" target="_blank">[지침] 장기근속포상제도 운영지침</a></li>
+<li><a href="https://drive.google.com/file/d/1GeCNEC-VPfJO0azPyL1Qagknpi0jWYyk/view?usp=drive_link" target="_blank">[매뉴얼] 재택근무제 매뉴얼</a></li>
+<li><a href="https://drive.google.com/file/d/1hUTCMdeG6nLpgZ0QvjxsAqmY77pYuYlX/view?usp=drive_link" target="_blank">[매뉴얼] 출장업무 매뉴얼</a></li>
+<li><a href="https://drive.google.com/file/d/1FAH7ZG5wYIPuXE2Ry6qwmYnGazdOQeFk/view?usp=drive_link/view?usp=drive_link" target="_blank">[공지] 출장 여비 규정 개정 - 해외장기파견수당 관련사항</a></li>
+<li><a href="https://drive.google.com/file/d/1bJDzLtl_zUekD18PYOIMHy-tcVxaIF_s/view?usp=drive_link/view?usp=drive_link" target="_blank">[공지] 사내 동아리 운영안</a></li>
+</ul>
+</div>
+<div class="card">
+<div class="emoji">💰</div>
+<div class="title">예산·정산</div>
+<div class="desc">법인카드, 해외송금, 경비처리 등</div>
+<ul>
+<li><a href="https://drive.google.com/file/d/1Nm1DOo9bSs-abaPs5RjayIW621NG6JJL/view?usp=drive_link" target="_blank">[지침] 법인체크카드 관리 및 사용지침</a></li>
+<li><a href="https://drive.google.com/file/d/1qhqqqrBg6NwuYF5Mb2UO0XGOlcaU788y/view?usp=drive_link" target="_blank">[지침] 해외송금 업무관리 지침</a></li>
+<li><a href="https://drive.google.com/file/d/1kmoK0IZ4jQoVwiatlxtRXWmQsnWT-d-F/view?usp=drive_link" target="_blank">[매뉴얼] 법인카드 사용 가이드</a></li>
+<li><a href="https://drive.google.com/file/d/1fCHwOgJ6zCqpmlqa3pvzyhZzqQjGpubz/view?usp=drive_link/view?usp=drive_link" target="_blank">[공지] 위임전결 시 지출결의 작성방법</a></li>
+</ul>
+</div>
+<div class="card">
+<div class="emoji">📁</div>
+<div class="title">사업관리</div>
+<div class="desc">용역계약 및 투찰, 파트너십, Clean ODA, 종료보고, 대외활동 등</div>
+<ul>
+<li><a href="https://drive.google.com/file/d/12YAtssJXwnjh45eF43o8EzFsUKD3rPFw/view?usp=drive_link" target="_blank">[규정] 대외활동 규정</a></li>
+<li><a href="https://drive.google.com/file/d/1xSBBMULSC8jZn3Xa0l2Ls2jW6JJS-XNI/view?usp=drive_link" target="_blank">[지침] 사업 종료보고 지침</a></li>
+<li><a href="https://drive.google.com/file/d/1VjJJu1vRlTonLnU8ERVrscsgYYg-dAtA/view?usp=drive_link/view?usp=drive_link" target="_blank">[지침] 수주인센티브 제도</a></li>
+<li><a href="https://drive.google.com/file/d/1QRwWnEQFEajtVTZ-1vCBZxHsVOnuBkzE/view?usp=drive_link" target="_blank">[지침] 용역계약 투찰 운영지침</a></li>
+<li><a href="https://drive.google.com/file/d/1toy6Lhad8LWC2aCdP1yBcnkJYOxKcVjV/view?usp=drive_link/view?usp=drive_link" target="_blank">[지침] 용역비 원천징수 기준</a></li>
+<li><a href="https://drive.google.com/file/d/1kOGVb7ylLn332BpqM4OGlk3lfAZFJXeU/view?usp=drive_link/view?usp=drive_link" target="_blank">[지침] 정보보안 지침</a></li>
+<li><a href="https://drive.google.com/file/d/1STmOPPPHp6ODm0nXO0qGPQjRtbHw_jUz/view?usp=drive_link" target="_blank">[지침] 파트너십사업 운영 지침</a></li>
+<li><a href="https://drive.google.com/file/d/18N2jlDKjsQQBEiy-UDPyL8FTyVxNFfqO/view?usp=drive_link" target="_blank">[지침] Clean ODA 실천기준</a></li>
+<li><a href="https://drive.google.com/file/d/1S5NqEMypjUJTJm4X7TwgY4T4Fi3zdP3F/view?usp=drive_link/view?usp=drive_link" target="_blank">[매뉴얼] 양성평등 및 상호존중을 위한 Clean&amp;Zero 캠페인</a></li>
+<li><a href="https://drive.google.com/file/d/1yHNBcxwPtFqROz6C1VwLm_Xqe-pSL0Bz/view?usp=drive_link/view?usp=drive_link" target="_blank">[공지] 해외 출장 중 도난·분실 사고 주의 </a></li>
+<li><a href="https://drive.google.com/file/d/1x1bHZNTOZZ4OdujgGnHpD-CV-7T_nBds/view?usp=drive_link/view?usp=drive_link" target="_blank">[공지] KOICA 국별협력사업 예비비 활용 세부지침 </a></li>
+<li><a href="https://drive.google.com/file/d/1RTZdIePx3O0SX4AxZpWcKBx5vHBDajWo/view?usp=drive_link/view?usp=drive_link" target="_blank">[공지] PAO 채용 및 운용 원칙</a></li>
+</ul>
+</div>
+<div class="card">
+<div class="emoji">💻</div>
+<div class="title">조직·사내 시스템</div>
+<div class="desc">위임전결, 회의체, 지정좌석, 회의실, 프린터 설정, 공용노트북, 주차안내 등</div>
+<ul>
+<li><a href="https://drive.google.com/file/d/1w9-Tae-3WXeMCYmFCInSv9Pf-utWvEqM/view?usp=drive_link" target="_blank">[규정] 전자결재라인</a></li>
+<li><a href="https://drive.google.com/file/d/1T0iGllM3C94ChG9j5JDOsc9bDSrzljRp/view?usp=drive_link" target="_blank">[규정] 노사협의회 규정</a></li>
+<li><a href="https://drive.google.com/file/d/13o6wwYaS1FLJC92PH5BriQc2XDJNcgt7/view?usp=drive_link" target="_blank">[지침] 개인노트북 사용지침</a></li>
+<li><a href="https://drive.google.com/file/d/1kOGVb7ylLn332BpqM4OGlk3lfAZFJXeU/view?usp=drive_link" target="_blank">[지침] 정보보안지침</a></li>
+<li><a href="https://drive.google.com/file/d/1T7g3byHJjyEZzv-RM8mZlov3CYX2B4u1/view?usp=drive_link" target="_blank">[매뉴얼] 프린터 설정 매뉴얼</a></li>
+<li><a href="https://drive.google.com/file/d/18LBwuC_hbpugdiSdu_SLXkNBdLx_oW-D/view?usp=drive_link" target="_blank">[매뉴얼] 비대면 화상회의 매뉴얼</a></li>
+<li><a href="https://drive.google.com/file/d/1yu9HpVK_z20nLaBKUHLwRIUwJeyLTzAL/view?usp=drive_link" target="_blank">[매뉴얼] 회의실 이용 안내</a></li>
+<li><a href="https://drive.google.com/file/d/1ip1BIfDDyM2_GAhgMCY10yutmFzNrBzO/view?usp=drive_link/view?usp=drive_link" target="_blank">[공지] 외부인사 위즈빌딩 주차 안내</a></li>
+<li><a href="https://drive.google.com/file/d/12FAIC5VpoQXgRcr9LwcYTdaD1e36Wpss/view?usp=drive_link/view?usp=drive_link" target="_blank">[공지] 지정번호 좌석 예약제 시행</a></li>
+<li><a href="https://drive.google.com/file/d/1qEsudCfiBFk1iQYSaCCajLr-BkJ36gmT/view?usp=drive_link/view?usp=drive_link" target="_blank">[참고] 한국개발전략연구소 정관</a></li>
+</ul>
+</div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const input = document.getElementById("searchInput");
+  const items = document.querySelectorAll(".card ul li");
+
+  input.addEventListener("input", function() {
+    const value = this.value.toLowerCase();
+    items.forEach(function(item) {
+      const text = item.textContent.toLowerCase();
+      const keywords = (item.getAttribute("data-keywords") || "").toLowerCase();
+      item.style.display = (text.includes(value) || keywords.includes(value)) ? "" : "none";
+    });
+  });
+});
+</script>
+</body>
+</html>
