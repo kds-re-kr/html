@@ -118,8 +118,6 @@
     font-size: 1.85rem; font-weight: 800; line-height: 1.35; letter-spacing: -0.01em;
     color: var(--brand-ink); margin: 0 0 10px; text-wrap: balance;
   }
-  .hero p { font-size: 1rem; color: var(--ink-muted); margin: 0 auto; max-width: 46ch; }
-
   /* ---- Jump menu: big tappable buttons ---- */
   .jump-menu { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 24px; }
   .jump-menu a, .jump-menu button {
@@ -321,18 +319,17 @@
 <div class="wrap">
 
   <div class="hero">
-    <h1>Beyond ODA TFT - HUB</h1>
-    <p>회의록, 정보 모음, 실무과제 진행 상황을 한 화면에서 확인하세요.</p>
+    <h1>Beyond ODA TFT HUB</h1>
 
     <div class="jump-menu">
       <button type="button" id="overviewTrigger">📋 TFT 소개</button>
-      <a href="#meetings">🗂️ 회의록 보기</a>
-      <a href="#info">🔗 정보 모음</a>
-      <a href="#tracker">✅ 과제 진행 현황</a>
+      <a href="https://kds-re-kr.github.io/html/Beyond%20ODA%20TFT%20HUB.html#meetings">🗂️ 회의록 모음</a>
+      <a href="https://kds-re-kr.github.io/html/Beyond%20ODA%20TFT%20HUB.html#info">🔗 정보 모음</a>
+      <a href="https://kds-re-kr.github.io/html/Beyond%20ODA%20TFT%20HUB.html#tracker">✅ 과제 진행 현황</a>
     </div>
 
     <div class="dday-banner">
-      <div class="big" id="ddayValue">D-13</div>
+      <div class="big" id="ddayValue">D-9</div>
       <div class="desc">다음 회의 · 3차, 8월 27일(목) 오전 10시</div>
     </div>
   </div>
@@ -379,7 +376,7 @@
         </div>
       </details>
 
-      <details class="meeting" open>
+      <details class="meeting" open="">
         <summary>
           <span class="m-num lightblue">2차</span>
           <span class="m-date">2026.08.13(목)</span>
@@ -460,6 +457,11 @@
     <p class="section-note">버튼을 누르면 새 창으로 사이트가 열립니다.</p>
 
     <div class="link-list">
+      <a class="link-btn lightblue" href="https://drive.google.com/drive/folders/1hZWK7j9EjFr7JQWsTGvZ6Dx01PAiAgLI?usp=drive_link" target="_blank" rel="noopener">
+        <span class="emoji">📁</span>
+        <span class="txt">TFT 공유 드라이브 바로가기</span>
+        <span class="go">›</span>
+      </a>
       <a class="link-btn navy" href="https://docs.google.com/spreadsheets/d/100qp6sxQBIRS4-MNDPqgDUVkuPst5KKp/edit?gid=961839701#gid=961839701" target="_blank" rel="noopener">
         <span class="emoji">🌐</span>
         <span class="txt">글로벌 정보 사이트 모음</span>
@@ -475,7 +477,7 @@
         <span class="txt">Korea Trust Fund List</span>
         <span class="go">›</span>
       </a>
-      <a class="link-btn green" href="https://www.devex.com/funding/r?report=tender-897523&filter%5Bstatuses%5D%5B%5D=forecast&filter%5Bstatuses%5D%5B%5D=open&sorting%5Border%5D=desc&sorting%5Bfield%5D=updated_at" target="_blank" rel="noopener">
+      <a class="link-btn green" href="https://www.devex.com/funding/r?report=tender-897523&amp;filter%5Bstatuses%5D%5B%5D=forecast&amp;filter%5Bstatuses%5D%5B%5D=open&amp;sorting%5Border%5D=desc&amp;sorting%5Bfield%5D=updated_at" target="_blank" rel="noopener">
         <span class="emoji">💼</span>
         <span class="txt">Devex</span>
         <span class="go">›</span>
@@ -637,7 +639,7 @@
       <div class="rows">
         <div class="task-row"><span class="k">담당</span><span class="v">김주하</span></div>
         <div class="task-row"><span class="k">상태</span><span class="v"><span class="status-chip reviewing">검토 중</span></span></div>
-        <div class="task-row"><span class="k">비고</span><span class="v">일정·인원·비용 산출 후 별도 보고 → 출장 여부 결정 (신청마감 8/14)</span></div>
+        <div class="task-row"><span class="k">비고</span><span class="v">일정·인원·비용 산출 후 별도 보고 → 출장 여부 결정</span></div>
       </div>
     </div>
   </section>
