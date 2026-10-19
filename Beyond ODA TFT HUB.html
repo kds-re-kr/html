@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="color-scheme" content="light dark">
+<meta name="color-scheme" content="light">
+<script>try{if(localStorage.getItem("tftTheme")==="dark"){document.documentElement.setAttribute("data-theme","dark");document.documentElement.style.colorScheme="dark";}}catch(e){}</script>
 <title>Beyond ODA TFT 정보 모음</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
@@ -28,26 +29,6 @@
 --mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-:root:not([data-theme="light"]) {
---bg: #0E0E0E;
---surface: #161616;
---surface-2: #1E1E1E;
---border: #2B2B2B;
---border-strong: #3E3E3E;
---ink: #F2F2EF;
---ink-muted: #BEBEB8;
---ink-faint: #8D8D88;
---invert-bg: #F2F2EF;
---invert-ink: #111111;
---green: #6FD39C;
---amber: #F0B867;
---red: #F2998F;
---blue: #8DB0F5;
---grid: rgba(255,255,255,0.06);
---shadow: 0 1px 2px rgba(0,0,0,0.4), 0 14px 36px rgba(0,0,0,0.45);
-}
-}
 :root[data-theme="dark"] {
 --bg: #0E0E0E;
 --surface: #161616;
@@ -105,6 +86,13 @@ min-width: 30px; min-height: 28px; font-weight: 800; cursor: pointer; line-heigh
 }
 .fontctrl button:hover { color: var(--ink); }
 .fontctrl button[aria-pressed="true"] { background: var(--invert-bg); color: var(--invert-ink); }
+.nav-tools { display: flex; align-items: center; gap: 8px; }
+.theme-btn {
+display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--border); border-radius: 999px;
+background: transparent; color: var(--ink); padding: 0 12px; min-height: 36px; font-size: 0.78rem; font-weight: 700; cursor: pointer;
+}
+.theme-btn:hover { border-color: var(--ink); }
+.theme-ico { font-size: 0.9rem; line-height: 1; }
 
 /* ---- Hero ---- */
 .hero { position: relative; padding: 84px 0 68px; text-align: center; overflow: hidden; border-bottom: 1px solid var(--border); }
@@ -324,6 +312,8 @@ details.tracker > summary { padding: 18px 16px; }
 .t-toggle { margin-left: 0; }
 .t-body { padding: 4px 16px 20px; }
 .member-grid { grid-template-columns: 1fr; }
+.theme-label { display: none; }
+.theme-btn { padding: 0 10px; }
 }
 </style>
 </head>
@@ -332,10 +322,13 @@ details.tracker > summary { padding: 18px 16px; }
 <header class="nav">
 <div class="nav-inner">
 <a class="logo" href="#top"><span class="logo-mark">B</span>Beyond ODA TFT</a>
+<div class="nav-tools">
+<button type="button" class="theme-btn" id="themeToggle" aria-pressed="false" aria-label="다크/일반 모드 전환"><span class="theme-ico">☾</span><span class="theme-label">다크 모드</span></button>
 <div class="fontctrl" role="group" aria-label="글자 크기">
 <button type="button" id="fsSmall" aria-pressed="false" aria-label="글자 작게" style="font-size:0.68rem;">가</button>
 <button type="button" id="fsMed" aria-pressed="true" aria-label="글자 보통" style="font-size:0.8rem;">가</button>
 <button type="button" id="fsBig" aria-pressed="false" aria-label="글자 크게" style="font-size:0.94rem;">가</button>
+</div>
 </div>
 </div>
 </header>
@@ -526,11 +519,33 @@ details.tracker > summary { padding: 18px 16px; }
 <span class="m-num">05</span>
 <span class="m-date">2026.09.30(수)</span>
 <span class="pill done">완료</span>
-<span class="m-title">회의록 등록 전</span>
+<span class="m-title">4차 할당 과제 점검 및 ADB BOF 2026 출장 결과 리뷰</span>
 <span class="m-toggle" aria-hidden="true">▾</span>
 </summary>
 <div class="m-body">
-<p class="note">회의록 원문이 등록되면 안건과 결정사항을 업데이트합니다. 5차 회의 이후 바뀐 과제 상태는 아래 ‘과제 진행 현황’에 반영되어 있습니다.</p>
+<p class="m-meta">오후 2시 ~ 4시 · 원장실 · 주관 전홍민 원장</p>
+<div class="attendees">
+<span class="chip">전홍민 원장 (TFT장)</span>
+<span class="chip">권경덕 센터장</span>
+<span class="chip">고준형 선임연구위원</span>
+<span class="chip">김주하 과장 (간사)</span>
+</div>
+<h4>안건</h4>
+<ul>
+<li>ADB BOF 2026 출장 결과 리뷰 — 행사 참석 결과, 주요 인사·기관 미팅 목록 및 내용, 출장 후속 행정(정산 등) 진행상황 — 전홍민, 권경덕 (행정: 김주하)</li>
+<li>ADB Green Steel Technology Challenge 추진 점검 — KIEP 인도사무소 비대면 미팅 결과(현황 파악 및 현지 수행과업 자문), 제안서 작성 현황 및 일정(Concept Note ~10.19 / Full Proposal 11월말) — 전홍민, 고준형</li>
+<li>EUROGIA 2030 3개국 콘소시엄 사업 점검 — 콘소시엄(한국·튀르키예·헝가리) 진행상황 및 향후 일정(권경덕), 발주처 요구서류(KDS 일반현황, 기관소개 자료 등) 준비 현황 및 보완 필요사항(김주하)</li>
+<li>라오스 직업교육 및 고용서비스 현대화 사업 — ADB BOF 현지 담당자 미팅 결과로 수익성 제한(총 사업비 50만 달러 내 WB 직원 인건비 등 관리비 포함) 재검증, 추진 여부 판단 및 후속 방향 결정 — 전홍민, 권경덕</li>
+<li>필리핀 Leyte 지역 핵심광물 공단 조성 사업 — ADB BOF 현지 담당자 미팅 결과 공유, 추진 방향 및 후속 Action 논의 — 권경덕</li>
+<li>GGGI 협력 채널 구축(사업개발) — 탄소감축 목적 달성에 유리한 대상 국가 선정 현황, 제안 접수 일정 및 준비 현황 — 권경덕</li>
+<li>중남미 지방정부 재정건전성·재정위기관리 역량강화(RG-T5066) — 재정 현황 전문가 확보 및 컨택포인트 확인 결과, 사업개발 진행 방향 논의 — 고준형</li>
+<li>기타: ADB Smart Livable Cities in Asia and the Pacific Region 사업 검토(권경덕), 추가 의견 나눔</li>
+</ul>
+<h4>차기 회의 일정 (안건지 작성 당시)</h4>
+<ul>
+<li>6차 10.6(화) 10:00, 7차 10.20(화) 10:00 — 이후 6차 회의가 10.20(화)로 조정됨</li>
+</ul>
+<p class="note">회의 안건지(9.29 작성) 기준 내용입니다.</p>
 </div>
 </details>
 
@@ -839,7 +854,7 @@ details.tracker > summary { padding: 18px 16px; }
 </section>
 
 <footer>
-<span>2026 Beyond ODA TFT · 6차 회의안건지(2026.10.20) 반영본 · 작성 간사: 김주하 과장</span>
+<span>2026 Beyond ODA TFT · 5·6차 회의안건지 반영본 · 작성 간사: 김주하 과장</span>
 <span class="mono">KDS · Beyond ODA</span>
 </footer>
 
@@ -981,6 +996,26 @@ Object.keys(map).forEach(function (id) {
 var s = document.getElementById(id);
 if (s) obs.observe(s);
 });
+})();
+
+(function () {
+var root = document.documentElement;
+var btn = document.getElementById('themeToggle');
+if (!btn) return;
+function render() {
+var dark = root.getAttribute('data-theme') === 'dark';
+btn.setAttribute('aria-pressed', dark ? 'true' : 'false');
+btn.querySelector('.theme-ico').textContent = dark ? '☀' : '☾';
+btn.querySelector('.theme-label').textContent = dark ? '일반 모드' : '다크 모드';
+root.style.colorScheme = dark ? 'dark' : 'light';
+}
+btn.addEventListener('click', function () {
+var dark = root.getAttribute('data-theme') !== 'dark';
+root.setAttribute('data-theme', dark ? 'dark' : 'light');
+try { localStorage.setItem('tftTheme', dark ? 'dark' : 'light'); } catch (e) {}
+render();
+});
+render();
 })();
 </script>
 
