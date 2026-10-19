@@ -3,361 +3,401 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
 <title>Beyond ODA TFT 정보 모음</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
 :root {
 --bg: #FFFFFF;
 --surface: #FFFFFF;
---surface-2: #F4F5F6;
---border: #D2D2D2;
---ink: #171717;
---ink-muted: #3D3D3D;
---ink-faint: #5E5E5E;
---brand: #21409A;
---brand-ink: #16305F;
---brand-tint: #E9EDF8;
---lightblue: #0083C9;
---lightblue-ink: #045E92;
---lightblue-tint: #DFF0FA;
---accent: #E67E1F;
---accent-ink: #8A4E12;
---accent-tint: #FCEAD3;
---crit: #B23B2D;
---crit-tint: #F8DEDA;
---done: #2F8A57;
---done-ink: #256F46;
---done-tint: #E1F1E7;
---shadow: 0 2px 4px rgba(23,23,23,0.05), 0 8px 22px rgba(23,23,23,0.06);
---font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
---scale: 1;
+--surface-2: #F5F5F3;
+--border: #E7E7E4;
+--border-strong: #CFCFCA;
+--ink: #111111;
+--ink-muted: #4B4B48;
+--ink-faint: #7C7C77;
+--invert-bg: #111111;
+--invert-ink: #FFFFFF;
+--green: #16794A;
+--amber: #A15C07;
+--red: #B42318;
+--blue: #1F4FB8;
+--grid: rgba(17,17,17,0.06);
+--shadow: 0 1px 2px rgba(0,0,0,0.04), 0 14px 36px rgba(0,0,0,0.07);
+--font: "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif;
+--mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
 }
 
 @media (prefers-color-scheme: dark) {
 :root:not([data-theme="light"]) {
---bg: #14181C;
---surface: #1C2126;
---surface-2: #242A30;
---border: #3A4148;
---ink: #F1F3F5;
---ink-muted: #C6CBD1;
---ink-faint: #A2A9B0;
---brand: #8AA6EC;
---brand-ink: #C0D1F7;
---brand-tint: #22304E;
---lightblue: #5BC6EC;
---lightblue-ink: #A4E1F5;
---lightblue-tint: #163545;
---accent: #F0A85E;
---accent-ink: #FBD09B;
---accent-tint: #3E2C15;
---crit: #EA8E7C;
---crit-tint: #3D251F;
---done: #7ED29E;
---done-ink: #A7E4C0;
---done-tint: #1B3526;
---shadow: 0 2px 4px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
+--bg: #0E0E0E;
+--surface: #161616;
+--surface-2: #1E1E1E;
+--border: #2B2B2B;
+--border-strong: #3E3E3E;
+--ink: #F2F2EF;
+--ink-muted: #BEBEB8;
+--ink-faint: #8D8D88;
+--invert-bg: #F2F2EF;
+--invert-ink: #111111;
+--green: #6FD39C;
+--amber: #F0B867;
+--red: #F2998F;
+--blue: #8DB0F5;
+--grid: rgba(255,255,255,0.06);
+--shadow: 0 1px 2px rgba(0,0,0,0.4), 0 14px 36px rgba(0,0,0,0.45);
 }
 }
 :root[data-theme="dark"] {
---bg: #14181C;
---surface: #1C2126;
---surface-2: #242A30;
---border: #3A4148;
---ink: #F1F3F5;
---ink-muted: #C6CBD1;
---ink-faint: #A2A9B0;
---brand: #8AA6EC;
---brand-ink: #C0D1F7;
---brand-tint: #22304E;
---lightblue: #5BC6EC;
---lightblue-ink: #A4E1F5;
---lightblue-tint: #163545;
---accent: #F0A85E;
---accent-ink: #FBD09B;
---accent-tint: #3E2C15;
---crit: #EA8E7C;
---crit-tint: #3D251F;
---done: #7ED29E;
---done-ink: #A7E4C0;
---done-tint: #1B3526;
---shadow: 0 2px 4px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
+--bg: #0E0E0E;
+--surface: #161616;
+--surface-2: #1E1E1E;
+--border: #2B2B2B;
+--border-strong: #3E3E3E;
+--ink: #F2F2EF;
+--ink-muted: #BEBEB8;
+--ink-faint: #8D8D88;
+--invert-bg: #F2F2EF;
+--invert-ink: #111111;
+--green: #6FD39C;
+--amber: #F0B867;
+--red: #F2998F;
+--blue: #8DB0F5;
+--grid: rgba(255,255,255,0.06);
+--shadow: 0 1px 2px rgba(0,0,0,0.4), 0 14px 36px rgba(0,0,0,0.45);
 }
 
 * { box-sizing: border-box; }
-html { font-size: 18px; }
+html { font-size: 17px; scroll-behavior: smooth; scroll-padding-top: 76px; }
 body {
 margin: 0; background: var(--bg); color: var(--ink);
-font-family: var(--font-body); line-height: 1.7;
+font-family: var(--font); line-height: 1.65; word-break: keep-all;
 -webkit-font-smoothing: antialiased;
 }
 a { color: inherit; }
 button { font-family: inherit; }
-.wrap { max-width: 780px; margin: 0 auto; padding: 0 20px 90px; }
+.wrap { max-width: 920px; margin: 0 auto; padding-inline: 20px; }
+.kicker {
+font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
+color: var(--ink-faint); margin: 0 0 14px;
+}
 
-/* ---- Top bar: font-size control ---- */
-.topbar {
-background: var(--brand); color: #FFFFFF; padding: 7px 20px;
+/* ---- Nav ---- */
+.nav {
+position: sticky; top: 0; z-index: 20;
+background: color-mix(in srgb, var(--bg) 84%, transparent);
+-webkit-backdrop-filter: saturate(1.4) blur(12px); backdrop-filter: saturate(1.4) blur(12px);
+border-bottom: 1px solid var(--border);
 }
-.topbar-inner {
-max-width: 780px; margin: 0 auto; display: flex; align-items: center;
-justify-content: flex-start; gap: 10px; flex-wrap: wrap;
+.nav-inner {
+max-width: 920px; margin: 0 auto; padding: 12px 20px;
+display: flex; align-items: center; justify-content: space-between; gap: 12px;
 }
-.brand-name { font-weight: 800; font-size: 0.95rem; letter-spacing: -0.01em; }
-.fontctrl { display: flex; align-items: center; gap: 4px; }
+.logo { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: -0.02em; text-decoration: none; font-size: 1rem; }
+.logo-mark {
+width: 26px; height: 26px; border-radius: 8px; background: var(--invert-bg); color: var(--invert-ink);
+display: grid; place-items: center; font-size: 0.78rem; font-weight: 900; letter-spacing: 0;
+}
+.fontctrl { display: flex; align-items: center; gap: 2px; border: 1px solid var(--border); border-radius: 999px; padding: 3px; }
 .fontctrl button {
-background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.5); color: #fff;
-border-radius: 6px; min-width: 24px; min-height: 24px; font-weight: 800; cursor: pointer;
-padding: 2px; line-height: 1;
+background: transparent; border: 0; color: var(--ink-muted); border-radius: 999px;
+min-width: 30px; min-height: 28px; font-weight: 800; cursor: pointer; line-height: 1; padding: 0 6px;
 }
-.fontctrl button:hover { background: rgba(255,255,255,0.28); }
-.fontctrl button[aria-pressed="true"] { background: #fff; color: var(--brand-ink); }
+.fontctrl button:hover { color: var(--ink); }
+.fontctrl button[aria-pressed="true"] { background: var(--invert-bg); color: var(--invert-ink); }
 
 /* ---- Hero ---- */
-.hero { padding: 30px 0 26px; text-align: center; }
-.hero h1 {
-font-size: 1.85rem; font-weight: 800; line-height: 1.35; letter-spacing: -0.01em;
-color: var(--brand-ink); margin: 0 0 10px; text-wrap: balance;
+.hero { position: relative; padding: 84px 0 68px; text-align: center; overflow: hidden; border-bottom: 1px solid var(--border); }
+.hero::before {
+content: ""; position: absolute; inset: 0; pointer-events: none;
+background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+background-size: 44px 44px;
+-webkit-mask-image: radial-gradient(ellipse at center, #000 25%, transparent 72%);
+mask-image: radial-gradient(ellipse at center, #000 25%, transparent 72%);
 }
-/* ---- Jump menu: big tappable buttons ---- */
-.jump-menu { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 24px; }
-.jump-menu a, .jump-menu button {
-display: flex; align-items: center; justify-content: center; gap: 8px; text-align: center;
-background: var(--surface); border: 2px solid var(--border); border-radius: 14px;
-padding: 16px 10px; min-height: 64px; text-decoration: none; color: var(--ink);
-font-weight: 700; font-size: 1rem; box-shadow: var(--shadow); font-family: inherit; cursor: pointer;
-}
-.jump-menu a:hover, .jump-menu button:hover { border-color: var(--brand); color: var(--brand-ink); }
+.hero .wrap { position: relative; }
+.hero h1 { font-size: clamp(2.5rem, 7.5vw, 4.2rem); line-height: 1.08; letter-spacing: -0.035em; margin: 0; font-weight: 300; }
+.hero h1 strong { display: block; font-weight: 900; }
+.lead { margin: 20px auto 0; max-width: 30em; color: var(--ink-muted); font-size: 1.02rem; }
 
-/* ---- Overview modal ---- */
-dialog#overviewDialog {
-max-width: 480px; width: 90vw; border: 2px solid var(--border); border-radius: 16px;
-padding: 0; background: var(--surface); color: var(--ink); box-shadow: var(--shadow);
+.next-card {
+margin: 36px auto 0; max-width: 440px; background: var(--surface); border: 1px solid var(--border);
+border-radius: 18px; padding: 18px 22px; box-shadow: var(--shadow);
+display: flex; align-items: center; gap: 20px; text-align: left;
 }
-dialog#overviewDialog::backdrop { background: rgba(10,18,20,0.55); }
-.modal-inner { padding: 20px 22px 24px; max-height: 82vh; overflow-y: auto; }
-.modal-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 6px; }
-.modal-head h2 { font-size: 1.25rem; font-weight: 800; margin: 0; }
-.modal-close {
-background: var(--surface-2); border: none; border-radius: 8px; width: 34px; height: 34px;
-color: var(--ink-muted); font-size: 1rem; cursor: pointer; flex-shrink: 0;
-}
-.modal-close:hover { color: var(--ink); }
+.next-card .dday { font-size: 2.1rem; font-weight: 900; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; min-width: 3.1em; line-height: 1; }
+.next-card .label { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); }
+.next-card .desc { font-weight: 800; font-size: 1rem; letter-spacing: -0.01em; }
+.next-card .sub { color: var(--ink-muted); font-size: 0.85rem; }
 
-.dday-banner {
-margin-top: 16px; background: var(--accent-tint); border: 2px solid var(--accent);
-border-radius: 14px; padding: 16px 18px; text-align: center;
+.jump { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 28px; }
+.btn {
+display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 12px 18px; border-radius: 10px;
+border: 1px solid var(--border-strong); background: var(--surface); color: var(--ink);
+font-weight: 700; font-size: 0.92rem; text-decoration: none; cursor: pointer; min-height: 46px;
+transition: border-color 0.15s, transform 0.15s;
 }
-.dday-banner .big { font-size: 1.6rem; font-weight: 800; color: var(--accent-ink); font-variant-numeric: tabular-nums; }
-.dday-banner .desc { font-size: 1rem; color: var(--ink-muted); margin-top: 4px; }
+.btn:hover { border-color: var(--ink); transform: translateY(-1px); }
+.btn.primary { background: var(--invert-bg); color: var(--invert-ink); border-color: var(--invert-bg); }
+.btn .arr { opacity: 0.75; font-size: 0.95em; }
 
 /* ---- Sections ---- */
-section { padding: 40px 0 6px; border-top: 3px solid var(--border); }
-section:first-of-type { border-top: none; }
-.section-title {
-display: flex; align-items: center; gap: 10px; margin-bottom: 6px;
-}
-.section-title .sq { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
-.sq.navy { background: var(--brand); }
-.sq.lightblue { background: var(--lightblue); }
-.sq.orange { background: var(--accent); }
-.sq.green { background: var(--done); }
-.section-title h2 { font-size: 1.5rem; font-weight: 800; margin: 0; letter-spacing: -0.01em; }
-.section-note { font-size: 0.95rem; color: var(--ink-muted); margin: 0 0 22px; }
+section.block { padding: 88px 0 8px; }
+.sec-head { margin-bottom: 28px; }
+.sec-head h2 { font-size: clamp(1.7rem, 4.2vw, 2.3rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.2; margin: 0; }
+.sec-head p { margin: 10px 0 0; color: var(--ink-muted); font-size: 0.95rem; }
+.sub-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin: 36px 0 14px; }
+.sub-head:first-of-type { margin-top: 0; }
+.sub-head h3 { margin: 0; font-size: 1.05rem; font-weight: 800; letter-spacing: -0.01em; }
+.sub-head span { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em; color: var(--ink-faint); text-transform: uppercase; }
 
-/* ---- TFT overview (inside modal, compact) ---- */
-.info-block {
-background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px;
-padding: 12px 14px; margin-bottom: 10px;
+/* ---- Pills ---- */
+.pill {
+display: inline-flex; align-items: center; gap: 6px; font-size: 0.75rem; font-weight: 700;
+padding: 4px 10px; border-radius: 999px; border: 1px solid var(--border-strong); color: var(--ink-muted); white-space: nowrap;
 }
-.info-block h3 { font-size: 0.95rem; font-weight: 800; margin: 0 0 6px; color: var(--brand-ink); }
-.info-block ul { margin: 0; padding-left: 20px; font-size: 0.88rem; color: var(--ink); }
-.info-block li { margin-bottom: 4px; }
-.info-block li:last-child { margin-bottom: 0; }
-
-.member-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
-.member-card {
-background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
-padding: 10px; box-shadow: var(--shadow); text-align: center;
-}
-.member-avatar {
-width: 32px; height: 32px; border-radius: 999px; background: var(--brand); color: #fff;
-display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.85rem;
-margin: 0 auto 6px;
-}
-.member-avatar.lightblue { background: var(--lightblue); }
-.member-avatar.orange { background: var(--accent); }
-.member-avatar.green { background: var(--done); }
-.member-card h3 { font-size: 0.9rem; font-weight: 800; margin: 0 0 2px; }
-.member-card .role { font-size: 0.76rem; color: var(--brand-ink); font-weight: 700; margin: 0 0 3px; }
-.member-card .desc { font-size: 0.76rem; color: var(--ink-muted); margin: 0; }
+.pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.pill.done { color: var(--green); border-color: color-mix(in srgb, var(--green) 38%, transparent); }
+.pill.next { background: var(--invert-bg); color: var(--invert-ink); border-color: var(--invert-bg); }
 
 /* ---- Meetings ---- */
-.meeting-list { display: flex; flex-direction: column; gap: 14px; }
-details.meeting {
-background: var(--surface); border: 2px solid var(--border); border-radius: 14px;
-box-shadow: var(--shadow); overflow: hidden;
-}
-details.meeting[open] { border-color: var(--brand); }
+.meeting-list { display: flex; flex-direction: column; gap: 10px; }
+details.meeting { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; transition: border-color 0.15s; }
+details.meeting:hover { border-color: var(--border-strong); }
+details.meeting[open] { border-color: var(--ink); }
 details.meeting > summary {
-list-style: none; cursor: pointer; padding: 16px 18px;
-display: flex; align-items: center; gap: 10px; flex-wrap: wrap; min-height: 44px;
+list-style: none; cursor: pointer; padding: 18px 64px 18px 20px; position: relative;
+display: flex; align-items: center; gap: 10px 12px; flex-wrap: wrap;
 }
 details.meeting > summary::-webkit-details-marker { display: none; }
 .m-num {
-font-weight: 800; font-size: 1rem; color: var(--brand-ink); background: var(--brand-tint);
-border-radius: 8px; padding: 6px 12px; flex-shrink: 0;
+font-family: var(--mono); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.04em;
+padding: 5px 10px; border-radius: 8px; background: var(--surface-2); color: var(--ink);
 }
-.m-num.lightblue { color: var(--lightblue-ink); background: var(--lightblue-tint); }
-.m-num.orange { color: var(--accent-ink); background: var(--accent-tint); }
-.m-num.green { color: var(--done-ink); background: var(--done-tint); }
-.m-date { font-size: 0.95rem; color: var(--ink-muted); font-weight: 600; }
-.m-title { font-weight: 700; font-size: 1.05rem; flex: 1 1 100%; order: 5; margin-top: 2px; }
+.m-date { font-size: 0.9rem; color: var(--ink-muted); font-weight: 600; font-variant-numeric: tabular-nums; }
+.m-title { flex: 1 1 100%; order: 5; font-weight: 700; font-size: 1.05rem; letter-spacing: -0.01em; }
 .m-toggle {
-margin-left: auto; display: inline-flex; align-items: center; gap: 6px;
-font-size: 0.9rem; font-weight: 700; color: var(--brand-ink);
+position: absolute; right: 18px; top: 18px; width: 30px; height: 30px; border-radius: 999px; border: 1px solid var(--border);
+display: grid; place-items: center; color: var(--ink-muted); font-size: 0.75rem; transition: transform 0.2s;
 }
-details.meeting[open] .m-toggle .arrow { transform: rotate(180deg); }
-.m-toggle .arrow { display: inline-block; transition: transform 0.15s; }
-.m-doclink {
-font-size: 0.9rem; font-weight: 700; color: #fff; text-decoration: none;
-display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px;
-border-radius: 999px; background: var(--brand); min-height: 40px;
+details.meeting[open] .m-toggle { transform: rotate(180deg); }
+.m-link {
+display: inline-flex; align-items: center; gap: 4px; font-size: 0.78rem; font-weight: 700; text-decoration: none;
+padding: 5px 11px; border-radius: 999px; background: var(--invert-bg); color: var(--invert-ink);
 }
-.m-body { padding: 4px 18px 20px; border-top: 1px solid var(--border); }
-.m-body-inner { padding-top: 14px; font-size: 0.98rem; color: var(--ink); }
-.m-body h4 { font-size: 0.95rem; font-weight: 800; color: var(--brand-ink); margin: 16px 0 8px; }
-.m-body h4:first-child { margin-top: 0; }
-.m-body ul { margin: 0; padding-left: 22px; }
-.m-body li { margin-bottom: 7px; }
-.attendees { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 4px; }
-.pill {
-display: inline-flex; align-items: center; font-size: 0.88rem; font-weight: 700;
-padding: 6px 12px; border-radius: 999px;
-}
-.pill.done { background: var(--done-tint); color: var(--done-ink); }
-.pill.scheduled { background: var(--surface-2); color: var(--ink-muted); border: 1px solid var(--border); }
-.pill.draft { background: var(--accent-tint); color: var(--accent-ink); }
-.pill.empty { background: var(--surface-2); color: var(--ink-faint); border: 1px solid var(--border); }
+.m-link.ghost { background: transparent; color: var(--ink); border: 1px solid var(--border-strong); }
+.m-body { padding: 0 20px 22px; border-top: 1px solid var(--border); }
+.m-meta { margin: 16px 0 0; font-size: 0.88rem; color: var(--ink-muted); }
+.attendees { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 14px; }
+.chip { font-size: 0.78rem; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: var(--surface-2); color: var(--ink-muted); }
+.m-body h4 { margin: 22px 0 8px; font-size: 0.78rem; font-weight: 800; color: var(--ink-faint); letter-spacing: 0.04em; }
+.m-body ul { margin: 0; padding-left: 1.1em; }
+.m-body li { margin-bottom: 6px; font-size: 0.95rem; }
+.m-body li::marker { color: var(--ink-faint); }
+.m-body .note { margin: 16px 0 0; color: var(--ink-muted); font-size: 0.93rem; }
 
-/* ---- Info session: big stacked buttons ---- */
-.link-list { display: flex; flex-direction: column; gap: 12px; }
-.link-btn {
-display: flex; align-items: center; gap: 16px; text-decoration: none; color: var(--ink);
-background: var(--surface); border: 2px solid var(--border); border-radius: 14px;
-padding: 16px 18px; min-height: 68px; box-shadow: var(--shadow);
+/* ---- Info ---- */
+.proposal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.proposal {
+display: flex; flex-direction: column; align-items: flex-start; gap: 6px; text-decoration: none; color: var(--ink);
+background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 20px;
+transition: border-color 0.15s, transform 0.15s;
 }
-.link-btn .emoji { font-size: 1.8rem; flex-shrink: 0; }
-.link-btn .txt { font-size: 1.1rem; font-weight: 800; }
-.link-btn .go { margin-left: auto; font-size: 1.3rem; color: var(--ink-faint); flex-shrink: 0; }
-.link-btn.navy { border-color: color-mix(in srgb, var(--brand) 35%, var(--border)); }
-.link-btn.navy .txt { color: var(--brand-ink); }
-.link-btn.lightblue { border-color: color-mix(in srgb, var(--lightblue) 35%, var(--border)); }
-.link-btn.lightblue .txt { color: var(--lightblue-ink); }
-.link-btn.orange { border-color: color-mix(in srgb, var(--accent) 35%, var(--border)); }
-.link-btn.orange .txt { color: var(--accent-ink); }
-.link-btn.green { border-color: color-mix(in srgb, var(--done) 35%, var(--border)); }
-.link-btn.green .txt { color: var(--done-ink); }
-
+.proposal:hover { border-color: var(--ink); transform: translateY(-2px); }
+.proposal h4 { margin: 8px 0 0; font-size: 1.08rem; font-weight: 800; letter-spacing: -0.015em; line-height: 1.35; }
+.proposal p { margin: 0; font-size: 0.86rem; color: var(--ink-muted); }
+.proposal .go { margin-top: 12px; font-size: 0.85rem; font-weight: 800; }
+.link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px; }
+.link-row {
+display: flex; align-items: center; gap: 14px; text-decoration: none; color: var(--ink);
+background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 14px 16px; min-height: 66px;
+transition: border-color 0.15s;
+}
+.link-row:hover { border-color: var(--ink); }
+.link-row .ico { width: 38px; height: 38px; border-radius: 10px; background: var(--surface-2); display: grid; place-items: center; font-size: 1.1rem; flex-shrink: 0; }
+.link-row .txt { font-weight: 700; font-size: 0.95rem; }
+.link-row .go { margin-left: auto; color: var(--ink-faint); }
 .callout {
-margin-top: 18px; background: var(--accent-tint); border: 2px solid var(--accent);
-border-radius: 14px; padding: 16px 18px; font-size: 0.98rem; color: var(--ink); display: flex; gap: 10px;
+margin-top: 14px; display: flex; gap: 12px; align-items: flex-start; background: var(--surface-2);
+border-radius: 14px; padding: 16px 18px; font-size: 0.92rem; color: var(--ink-muted);
 }
-.callout .icon { font-size: 1.3rem; flex-shrink: 0; }
-.callout strong { color: var(--accent-ink); }
+.callout strong { color: var(--ink); }
 
-/* ---- Tracker: card list instead of table ---- */
-.task-group-label {
-font-size: 0.85rem; font-weight: 800; color: var(--ink); margin: 16px 0 8px;
-padding-bottom: 4px; border-bottom: 2px solid var(--border);
+/* ---- Tracker ---- */
+details.tracker { border: 1px solid var(--border); border-radius: 18px; background: var(--surface); }
+details.tracker[open] { border-color: var(--ink); }
+details.tracker > summary {
+list-style: none; cursor: pointer; padding: 20px 22px;
+display: flex; align-items: center; flex-wrap: wrap; gap: 12px 16px;
 }
-.task-group-label:first-of-type { margin-top: 0; }
+details.tracker > summary::-webkit-details-marker { display: none; }
+.t-total { font-weight: 800; font-size: 1.1rem; letter-spacing: -0.01em; }
+.t-stats { display: flex; flex-wrap: wrap; gap: 6px; }
+.stat { font-size: 0.78rem; font-weight: 600; color: var(--ink-muted); padding: 4px 10px; border-radius: 999px; background: var(--surface-2); }
+.stat b { color: var(--ink); font-weight: 800; margin-right: 4px; font-variant-numeric: tabular-nums; }
+.t-toggle {
+margin-left: auto; font-size: 0.85rem; font-weight: 700; display: inline-flex; align-items: center; gap: 8px;
+padding: 9px 16px; border-radius: 999px; background: var(--invert-bg); color: var(--invert-ink);
+}
+details.tracker[open] .t-toggle .when-closed { display: none; }
+details.tracker:not([open]) .t-toggle .when-open { display: none; }
+.t-body { padding: 4px 22px 26px; border-top: 1px solid var(--border); }
+.t-body .note { margin: 18px 0 0; color: var(--ink-muted); font-size: 0.9rem; }
+.group-label { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 10px; margin: 28px 0 12px; font-weight: 800; font-size: 1rem; }
+.group-label span { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; color: var(--ink-faint); font-weight: 500; text-transform: uppercase; }
+.task-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 10px; }
 .task-card {
-background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
-padding: 10px 12px; margin-bottom: 7px; box-shadow: var(--shadow);
+border: 1px solid var(--border); border-radius: 14px; padding: 14px 16px; background: var(--surface);
+display: flex; flex-direction: column; gap: 8px;
 }
-.task-card .name { font-size: 0.92rem; font-weight: 800; margin: 0 0 5px; line-height: 1.35; }
-.task-card .rows { display: flex; flex-direction: column; gap: 3px; }
-.task-row { display: flex; gap: 6px; font-size: 0.8rem; }
-.task-row .k { font-weight: 700; color: var(--ink-faint); flex-shrink: 0; width: 3.6em; }
-.task-row .v { color: var(--ink); }
+.task-card .head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+.task-card .name { margin: 0; font-size: 0.93rem; font-weight: 700; line-height: 1.4; letter-spacing: -0.01em; }
+.task-row { display: flex; gap: 8px; font-size: 0.82rem; line-height: 1.55; }
+.task-row .k { color: var(--ink-faint); font-weight: 700; flex-shrink: 0; width: 2.6em; }
+.task-row .v { color: var(--ink-muted); }
+.task-card.is-dropped { background: var(--surface-2); border-style: dashed; }
+.task-card.is-dropped .name { color: var(--ink-faint); }
 .status-chip {
-display: inline-flex; align-items: center; font-size: 0.76rem; font-weight: 800;
-padding: 3px 8px; border-radius: 999px;
+display: inline-flex; align-items: center; font-size: 0.7rem; font-weight: 800;
+padding: 3px 9px; border-radius: 999px; border: 1px solid color-mix(in srgb, currentColor 40%, transparent);
+white-space: nowrap; flex-shrink: 0;
 }
-.status-chip.mandatory { background: var(--crit-tint); color: var(--crit); }
-.status-chip.candidate { background: var(--accent-tint); color: var(--accent-ink); }
-.status-chip.reviewing { background: var(--lightblue-tint); color: var(--lightblue-ink); }
-.status-chip.progress { background: var(--brand-tint); color: var(--brand-ink); }
-.status-chip.done { background: var(--done-tint); color: var(--done-ink); }
-.status-chip.dropped { background: var(--surface-2); color: var(--ink-faint); border: 1px solid var(--border); }
+.status-chip.mandatory { color: var(--red); }
+.status-chip.candidate { color: var(--amber); }
+.status-chip.reviewing { color: var(--blue); }
+.status-chip.progress { color: var(--invert-ink); background: var(--invert-bg); border-color: var(--invert-bg); }
+.status-chip.done { color: var(--green); }
+.status-chip.moved { color: var(--ink-faint); }
+.status-chip.dropped { color: var(--ink-faint); border-style: dashed; }
 
+/* ---- Footer ---- */
 footer {
-margin-top: 50px; padding-top: 22px; border-top: 3px solid var(--border);
-font-size: 0.9rem; color: var(--ink-faint); text-align: center; line-height: 1.8;
+margin-top: 96px; padding: 28px 0 56px; border-top: 1px solid var(--border);
+display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 20px; font-size: 0.82rem; color: var(--ink-faint);
 }
+footer .mono { font-family: var(--mono); letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.68rem; }
 
-@media (max-width: 560px) {
-html { font-size: 17px; }
-.jump-menu { grid-template-columns: 1fr; }
+/* ---- Side progress (desktop) ---- */
+.side-dots { position: fixed; right: 22px; top: 50%; transform: translateY(-50%); display: none; flex-direction: column; gap: 12px; z-index: 15; }
+.side-dots a { display: flex; align-items: center; justify-content: flex-end; gap: 10px; text-decoration: none; color: var(--ink-faint); font-size: 0.72rem; font-weight: 700; }
+.side-dots a i { display: block; width: 10px; height: 2px; background: var(--border-strong); transition: width 0.2s, background 0.2s; }
+.side-dots a span { opacity: 0; transition: opacity 0.2s; }
+.side-dots a:hover span, .side-dots a.active span { opacity: 1; }
+.side-dots a.active { color: var(--ink); }
+.side-dots a.active i { width: 22px; background: var(--ink); }
+@media (min-width: 1140px) { .side-dots { display: flex; } }
+
+/* ---- Overview modal ---- */
+dialog#overviewDialog {
+max-width: 520px; width: calc(100vw - 32px); border: 1px solid var(--border); border-radius: 20px;
+padding: 0; background: var(--surface); color: var(--ink); box-shadow: 0 24px 64px rgba(0,0,0,0.25);
+}
+dialog#overviewDialog::backdrop { background: rgba(10,10,10,0.5); }
+.modal-inner { padding: 24px; max-height: 84vh; overflow-y: auto; }
+.modal-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.modal-head .kicker { margin: 0; }
+.modal-head h2 { margin: 6px 0 0; font-size: 1.45rem; font-weight: 800; letter-spacing: -0.02em; }
+.modal-close { background: var(--surface-2); border: 0; border-radius: 999px; width: 34px; height: 34px; color: var(--ink-muted); cursor: pointer; font-size: 0.9rem; flex-shrink: 0; }
+.modal-close:hover { color: var(--ink); }
+.modal-inner .intro { color: var(--ink-muted); font-size: 0.92rem; margin: 8px 0 14px; }
+.info-block { border-top: 1px solid var(--border); padding: 14px 0; }
+.info-block h3 { margin: 0 0 6px; font-size: 0.78rem; font-weight: 800; color: var(--ink-faint); letter-spacing: 0.04em; }
+.info-block ul { margin: 0; padding-left: 1.1em; font-size: 0.9rem; }
+.info-block li { margin-bottom: 3px; }
+.member-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-top: 4px; }
+.member-card { border: 1px solid var(--border); border-radius: 14px; padding: 12px; display: flex; gap: 10px; align-items: center; }
+.member-avatar { width: 36px; height: 36px; border-radius: 10px; background: var(--invert-bg); color: var(--invert-ink); display: grid; place-items: center; font-weight: 800; font-size: 0.9rem; flex-shrink: 0; }
+.member-card h4 { margin: 0; font-size: 0.92rem; font-weight: 800; }
+.member-card .role { margin: 0; font-size: 0.74rem; color: var(--ink-faint); font-weight: 600; }
+.member-card .desc { margin: 2px 0 0; font-size: 0.74rem; color: var(--ink-muted); }
+
+@media (max-width: 600px) {
+html { font-size: 16px; }
+.hero { padding: 56px 0 44px; }
+.next-card { flex-direction: column; align-items: flex-start; gap: 8px; }
+.jump { display: grid; grid-template-columns: 1fr 1fr; }
+section.block { padding-top: 64px; }
+details.meeting > summary { padding: 16px 56px 16px 16px; }
+.m-toggle { right: 14px; top: 16px; }
+.m-body { padding: 0 16px 18px; }
+details.tracker > summary { padding: 18px 16px; }
+.t-toggle { margin-left: 0; }
+.t-body { padding: 4px 16px 20px; }
 .member-grid { grid-template-columns: 1fr; }
-.hero h1 { font-size: 1.55rem; }
 }
 </style>
 </head>
 <body>
 
-<div class="topbar">
-<div class="topbar-inner">
-<div class="brand-name">Beyond ODA TFT</div>
-<div class="fontctrl">
-<button type="button" id="fsSmall" aria-pressed="false" aria-label="글자 작게" style="font-size:0.65rem;">가</button>
+<header class="nav">
+<div class="nav-inner">
+<a class="logo" href="#top"><span class="logo-mark">B</span>Beyond ODA TFT</a>
+<div class="fontctrl" role="group" aria-label="글자 크기">
+<button type="button" id="fsSmall" aria-pressed="false" aria-label="글자 작게" style="font-size:0.68rem;">가</button>
 <button type="button" id="fsMed" aria-pressed="true" aria-label="글자 보통" style="font-size:0.8rem;">가</button>
-<button type="button" id="fsBig" aria-pressed="false" aria-label="글자 크게" style="font-size:0.95rem;">가</button>
+<button type="button" id="fsBig" aria-pressed="false" aria-label="글자 크게" style="font-size:0.94rem;">가</button>
 </div>
 </div>
-</div>
+</header>
 
+<nav class="side-dots" aria-label="섹션 이동">
+<a href="#top"><span>처음</span><i></i></a>
+<a href="#meetings"><span>회의록</span><i></i></a>
+<a href="#info"><span>정보 모음</span><i></i></a>
+<a href="#tracker"><span>과제 현황</span><i></i></a>
+</nav>
+
+<section class="hero" id="top">
 <div class="wrap">
+<p class="kicker">KDS · 2026 Beyond ODA Task Force</p>
+<h1>Beyond ODA<strong>TFT HUB.</strong></h1>
+<p class="lead">회의록, 정보, 과제 진행 현황을 한 곳에서 확인하세요.</p>
 
-<div class="hero">
-<h1>Beyond ODA TFT HUB</h1>
-
-<div class="jump-menu">
-<button type="button" id="overviewTrigger">📋 TFT 소개</button>
-<a href="https://kds-re-kr.github.io/html/Beyond%20ODA%20TFT%20HUB.html#meetings">🗂️ 회의록 모음</a>
-<a href="https://kds-re-kr.github.io/html/Beyond%20ODA%20TFT%20HUB.html#info">🔗 정보 모음</a>
-<a href="https://kds-re-kr.github.io/html/Beyond%20ODA%20TFT%20HUB.html#tracker">✅ 과제 진행 현황</a>
-</div>
-
-<div class="dday-banner">
-<div class="big" id="ddayValue">D-9</div>
-<div class="desc">다음 회의 · 5차, 9월 30일(수) 오후 2시</div>
+<div class="next-card">
+<div class="dday" id="ddayValue">D-1</div>
+<div>
+<div class="label">Next meeting</div>
+<div class="desc">6차 회의 · 10월 20일(화) 오전 10시</div>
+<div class="sub">원장실 · 주요 제안서 제출 결과 공유</div>
 </div>
 </div>
 
-<section id="meetings">
-<div class="section-title"><span class="sq navy"></span><h2>회의록 모음</h2></div>
-<p class="section-note">회차를 눌러보시면 안건과 결정사항을 볼 수 있습니다. 파란 버튼을 누르면 원문 파일이 열립니다.</p>
+<div class="jump">
+<button type="button" class="btn primary" id="overviewTrigger">TFT 소개 <span class="arr">↗</span></button>
+<a class="btn" href="#meetings">회의록 모음</a>
+<a class="btn" href="#info">정보 모음</a>
+<a class="btn" href="#tracker">과제 진행 현황</a>
+</div>
+</div>
+</section>
+
+<main class="wrap">
+
+<section class="block" id="meetings">
+<div class="sec-head">
+<p class="kicker">01 / Meetings</p>
+<h2>회의록 모음</h2>
+<p>회차를 누르면 안건과 결정사항을 볼 수 있습니다. 검은 버튼을 누르면 원문 파일이 열립니다.</p>
+</div>
 
 <div class="meeting-list">
 
 <details class="meeting">
 <summary>
-<span class="m-num">1차</span>
+<span class="m-num">01</span>
 <span class="m-date">2026.07.29(수)</span>
 <span class="pill done">완료</span>
-<a class="m-doclink" href="https://drive.google.com/file/d/12Ij_Q-jPmihkqnQ2mni8-Xve2vEoUW_Z/view?usp=drive_link" target="_blank" rel="noopener" onclick="event.stopPropagation()">원문 열기 ↗</a>
+<a class="m-link" href="https://drive.google.com/file/d/12Ij_Q-jPmihkqnQ2mni8-Xve2vEoUW_Z/view?usp=drive_link" target="_blank" rel="noopener" onclick="event.stopPropagation()">원문 ↗</a>
 <span class="m-title">주요 목표시장 설정 및 초기 실행방안 논의</span>
-<span class="m-toggle">자세히 보기 <span class="arrow">▾</span></span>
+<span class="m-toggle" aria-hidden="true">▾</span>
 </summary>
 <div class="m-body">
-<div class="m-body-inner">
 <div class="attendees">
-<span class="pill scheduled">전홍민 원장</span>
-<span class="pill scheduled">권경덕 센터장</span>
-<span class="pill scheduled">고준형 선임연구위원</span>
-<span class="pill scheduled">김아름 연구위원</span>
-<span class="pill scheduled">김주하 과장 (간사)</span>
+<span class="chip">전홍민 원장</span>
+<span class="chip">권경덕 센터장</span>
+<span class="chip">고준형 선임연구위원</span>
+<span class="chip">김아름 연구위원</span>
+<span class="chip">김주하 과장 (간사)</span>
 </div>
 <h4>안건</h4>
 <ul>
@@ -374,25 +414,23 @@ html { font-size: 17px; }
 <li>TFT 운영: 8월 가동 → 10월 조직개편 → 연내 가시적 성과 도출</li>
 </ul>
 </div>
-</div>
 </details>
 
 <details class="meeting">
 <summary>
-<span class="m-num lightblue">2차</span>
+<span class="m-num">02</span>
 <span class="m-date">2026.08.13(목)</span>
 <span class="pill done">완료</span>
-<a class="m-doclink" href="https://drive.google.com/file/d/14thNZZwxwELDENjZlfT4iIrtWHhpcisL/view?usp=drive_link" target="_blank" rel="noopener" onclick="event.stopPropagation()">원문 열기 ↗</a>
+<a class="m-link" href="https://drive.google.com/file/d/14thNZZwxwELDENjZlfT4iIrtWHhpcisL/view?usp=drive_link" target="_blank" rel="noopener" onclick="event.stopPropagation()">원문 ↗</a>
 <span class="m-title">사업 선별 및 실무과제 할당</span>
-<span class="m-toggle">자세히 보기 <span class="arrow">▾</span></span>
+<span class="m-toggle" aria-hidden="true">▾</span>
 </summary>
 <div class="m-body">
-<div class="m-body-inner">
 <div class="attendees">
-<span class="pill scheduled">전홍민 원장 (TFT장)</span>
-<span class="pill scheduled">권경덕 센터장</span>
-<span class="pill scheduled">고준형 선임연구위원</span>
-<span class="pill scheduled">김주하 과장 (간사)</span>
+<span class="chip">전홍민 원장 (TFT장)</span>
+<span class="chip">권경덕 센터장</span>
+<span class="chip">고준형 선임연구위원</span>
+<span class="chip">김주하 과장 (간사)</span>
 </div>
 <h4>안건</h4>
 <ul>
@@ -409,25 +447,23 @@ html { font-size: 17px; }
 <li>TFT 멤버 대상 Devex·EDCF 등 웹사이트 계정 공유 진행</li>
 </ul>
 </div>
-</div>
 </details>
 
 <details class="meeting">
 <summary>
-<span class="m-num orange">3차</span>
+<span class="m-num">03</span>
 <span class="m-date">2026.08.27(목)</span>
 <span class="pill done">완료</span>
-<a class="m-doclink" href="https://drive.google.com/file/d/1CWllMF-ciG4QWVy1I6jcjCbmDt-iH2rD/view?usp=drive_link" target="_blank" rel="noopener" onclick="event.stopPropagation()">원문 열기 ↗</a>
+<a class="m-link" href="https://drive.google.com/file/d/1CWllMF-ciG4QWVy1I6jcjCbmDt-iH2rD/view?usp=drive_link" target="_blank" rel="noopener" onclick="event.stopPropagation()">원문 ↗</a>
 <span class="m-title">2차 Action Item 점검 및 MDB 기회분석 툴 개발 논의</span>
-<span class="m-toggle">자세히 보기 <span class="arrow">▾</span></span>
+<span class="m-toggle" aria-hidden="true">▾</span>
 </summary>
 <div class="m-body">
-<div class="m-body-inner">
 <div class="attendees">
-<span class="pill scheduled">전홍민 원장 (TFT장)</span>
-<span class="pill scheduled">권경덕 센터장</span>
-<span class="pill scheduled">고준형 선임연구위원</span>
-<span class="pill scheduled">김주하 과장 (간사)</span>
+<span class="chip">전홍민 원장 (TFT장)</span>
+<span class="chip">권경덕 센터장</span>
+<span class="chip">고준형 선임연구위원</span>
+<span class="chip">김주하 과장 (간사)</span>
 </div>
 <h4>안건</h4>
 <ul>
@@ -446,25 +482,23 @@ html { font-size: 17px; }
 <li>차기 회의 일정 확정 — 4차 9.10(목), 5차 9.30(수), 6차 10.6(화), 7차 10.7(수)</li>
 </ul>
 </div>
-</div>
 </details>
 
 <details class="meeting">
 <summary>
-<span class="m-num green">4차</span>
+<span class="m-num">04</span>
 <span class="m-date">2026.09.10(목)</span>
 <span class="pill done">완료</span>
-<a class="m-doclink" href="https://drive.google.com/file/d/1VjK68zPoIeb0elysGZuhVm04F_Mmh0_4/view?usp=drive_link" target="_blank" rel="noopener" onclick="event.stopPropagation()">원문 열기 ↗</a>
+<a class="m-link" href="https://drive.google.com/file/d/1VjK68zPoIeb0elysGZuhVm04F_Mmh0_4/view?usp=drive_link" target="_blank" rel="noopener" onclick="event.stopPropagation()">원문 ↗</a>
 <span class="m-title">3차 Action Item 점검 및 TFT 운영 현안 논의</span>
-<span class="m-toggle">자세히 보기 <span class="arrow">▾</span></span>
+<span class="m-toggle" aria-hidden="true">▾</span>
 </summary>
 <div class="m-body">
-<div class="m-body-inner">
 <div class="attendees">
-<span class="pill scheduled">전홍민 원장 (TFT장)</span>
-<span class="pill scheduled">권경덕 센터장</span>
-<span class="pill scheduled">고준형 선임연구위원</span>
-<span class="pill scheduled">김주하 과장 (간사)</span>
+<span class="chip">전홍민 원장 (TFT장)</span>
+<span class="chip">권경덕 센터장</span>
+<span class="chip">고준형 선임연구위원</span>
+<span class="chip">김주하 과장 (간사)</span>
 </div>
 <h4>안건</h4>
 <ul>
@@ -485,369 +519,342 @@ html { font-size: 17px; }
 <li>차기 회의 일정 확정 — 5차 9.30(수) 14:00, 6차 10.6(화) 10:00, 7차 10.20(화) 10:00</li>
 </ul>
 </div>
+</details>
+
+<details class="meeting">
+<summary>
+<span class="m-num">05</span>
+<span class="m-date">2026.09.30(수)</span>
+<span class="pill done">완료</span>
+<span class="m-title">회의록 등록 전</span>
+<span class="m-toggle" aria-hidden="true">▾</span>
+</summary>
+<div class="m-body">
+<p class="note">회의록 원문이 등록되면 안건과 결정사항을 업데이트합니다. 5차 회의 이후 바뀐 과제 상태는 아래 ‘과제 진행 현황’에 반영되어 있습니다.</p>
 </div>
 </details>
 
 <details class="meeting" open="">
 <summary>
-<span class="m-num">5차</span>
-<span class="m-date">2026.09.30(수)</span>
-<span class="pill scheduled">예정</span>
-<span class="m-title">회의록 등록 전</span>
-<span class="m-toggle">자세히 보기 <span class="arrow">▾</span></span>
-</summary>
-<div class="m-body">
-<div class="m-body-inner">오후 2시 시작 예정입니다.</div>
-</div>
-</details>
-
-<details class="meeting">
-<summary>
-<span class="m-num lightblue">6차</span>
-<span class="m-date">2026.10.06(화)</span>
-<span class="pill scheduled">예정</span>
-<span class="m-title">회의록 등록 전</span>
-<span class="m-toggle">자세히 보기 <span class="arrow">▾</span></span>
-</summary>
-<div class="m-body">
-<div class="m-body-inner">오전 10시 시작 예정입니다.</div>
-</div>
-</details>
-
-<details class="meeting">
-<summary>
-<span class="m-num orange">7차</span>
+<span class="m-num">06</span>
 <span class="m-date">2026.10.20(화)</span>
-<span class="pill scheduled">예정</span>
-<span class="m-title">회의록 등록 전</span>
-<span class="m-toggle">자세히 보기 <span class="arrow">▾</span></span>
+<span class="pill next">다음 회의</span>
+<a class="m-link ghost" href="https://drive.google.com/file/d/1ky07qpW_6pWSCM3yilczjj6JxJKQBLrq/view?usp=drive_link" target="_blank" rel="noopener" onclick="event.stopPropagation()">안건지 ↗</a>
+<span class="m-title">주요 제안서 제출 결과 공유 및 5차 할당 과제 점검</span>
+<span class="m-toggle" aria-hidden="true">▾</span>
 </summary>
 <div class="m-body">
-<div class="m-body-inner">오전 10시 시작 예정입니다.</div>
+<p class="m-meta">오전 10시 ~ 12시 · 원장실 · 주관 전홍민 원장</p>
+<div class="attendees">
+<span class="chip">전홍민 원장 (TFT장)</span>
+<span class="chip">권경덕 센터장</span>
+<span class="chip">고준형 선임연구위원</span>
+<span class="chip">김주하 과장 (간사)</span>
+</div>
+<h4>안건</h4>
+<ul>
+<li>ADB Green Steel Technology Challenge 컨셉노트 제출(10.19) 결과 공유 — 전홍민, 고준형</li>
+<li>EUROGIA 2030 3개국 콘소시엄(한국·튀르키예·헝가리) 입찰서 제출(9.30) 결과 공유 — 권경덕</li>
+<li>라오스 직업교육 및 고용서비스 현대화 사업 추진 여부 — 전홍민, 권경덕</li>
+<li>필리핀 Leyte 지역 핵심광물 공단 조성 사업: 5차 회의 후속 Action 진행상황 — 권경덕</li>
+<li>GGGI 협력 채널 구축(사업개발): 대상 국가 선정 결과 및 제안 준비 현황 — 권경덕</li>
+<li>중남미 지방정부 재정건전성·재정위기관리 역량강화(RG-T5066): 재정 전문가 확보 결과 및 사업개발 진행상황 — 고준형</li>
+<li>기타: ADB Smart Livable Cities in Asia and the Pacific Region 사업 검토 결과(권경덕), 추가 의견 나눔</li>
+</ul>
+<h4>차기 회의</h4>
+<ul>
+<li>7차 회의 일정은 이번 회의에서 협의 후 확정합니다.</li>
+</ul>
+</div>
+</details>
+
+<details class="meeting">
+<summary>
+<span class="m-num">07</span>
+<span class="m-date">일정 미정</span>
+<span class="pill">예정</span>
+<span class="m-title">6차 회의에서 일정 확정 예정</span>
+<span class="m-toggle" aria-hidden="true">▾</span>
+</summary>
+<div class="m-body">
+<p class="note">6차 회의(10.20)에서 협의 후 일정이 확정되면 업데이트합니다.</p>
 </div>
 </details>
 
 </div>
 </section>
 
-<section id="info">
-<div class="section-title"><span class="sq lightblue"></span><h2>정보 모음</h2></div>
-<p class="section-note">버튼을 누르면 새 창으로 사이트가 열립니다.</p>
+<section class="block" id="info">
+<div class="sec-head">
+<p class="kicker">02 / Resources</p>
+<h2>정보 모음</h2>
+<p>버튼을 누르면 새 창으로 열립니다.</p>
+</div>
 
-<div class="link-list">
-<a class="link-btn lightblue" href="https://drive.google.com/drive/folders/1hZWK7j9EjFr7JQWsTGvZ6Dx01PAiAgLI?usp=drive_link" target="_blank" rel="noopener">
-<span class="emoji">📁</span>
-<span class="txt">TFT 공유 드라이브 바로가기</span>
-<span class="go">›</span>
+<div class="sub-head"><h3>제안서 제출 사업</h3><span>Proposal folders</span></div>
+<div class="proposal-grid">
+<a class="proposal" href="https://drive.google.com/drive/folders/10v1lJRqdZHb9-P0ABwdagHZpekPM6Bd4?usp=drive_link" target="_blank" rel="noopener">
+<span class="pill done">Concept Note 제출 · 10.19</span>
+<h4>ADB Green Steel Technology Challenge</h4>
+<p>인도 철강기업 탈탄소 기술지원 · 전홍민, 고준형</p>
+<span class="go">폴더 열기 ↗</span>
 </a>
-<a class="link-btn navy" href="https://docs.google.com/spreadsheets/d/100qp6sxQBIRS4-MNDPqgDUVkuPst5KKp/edit?gid=961839701#gid=961839701" target="_blank" rel="noopener">
-<span class="emoji">🌐</span>
-<span class="txt">글로벌 정보 사이트 모음</span>
-<span class="go">›</span>
+<a class="proposal" href="https://drive.google.com/drive/folders/1xfbhaAVf40hbSNNzOj_qftbrJwz2i2id?usp=drive_link" target="_blank" rel="noopener">
+<span class="pill done">입찰서 제출 · 9.30</span>
+<h4>EUROGIA 2030 3개국 콘소시엄</h4>
+<p>한국·튀르키예·헝가리 · 권경덕</p>
+<span class="go">폴더 열기 ↗</span>
 </a>
-<a class="link-btn lightblue" href="https://docs.google.com/spreadsheets/d/1iQB_chFy_Auynx1PVUqhdWhY2FGaCVJp1VAdkP44YQs/edit?gid=1349915755#gid=1349915755" target="_blank" rel="noopener">
-<span class="emoji">📊</span>
-<span class="txt">사업 기회 분석 시스템</span>
-<span class="go">›</span>
+</div>
+
+<div class="sub-head"><h3>바로가기</h3><span>Links</span></div>
+<div class="link-grid">
+<a class="link-row" href="https://drive.google.com/drive/folders/1hZWK7j9EjFr7JQWsTGvZ6Dx01PAiAgLI?usp=drive_link" target="_blank" rel="noopener">
+<span class="ico">📁</span><span class="txt">TFT 공유 드라이브</span><span class="go">↗</span>
 </a>
-<a class="link-btn orange" href="https://docs.google.com/spreadsheets/d/1Dg2UNNLHQnci_iS4KyIBYkhiCVeqgGAA/edit?usp=drive_link" target="_blank" rel="noopener">
-<span class="emoji">🏦</span>
-<span class="txt">Korea Trust Fund List</span>
-<span class="go">›</span>
+<a class="link-row" href="https://docs.google.com/spreadsheets/d/100qp6sxQBIRS4-MNDPqgDUVkuPst5KKp/edit?gid=961839701#gid=961839701" target="_blank" rel="noopener">
+<span class="ico">🌐</span><span class="txt">글로벌 정보 사이트 모음</span><span class="go">↗</span>
 </a>
-<a class="link-btn green" href="https://www.devex.com/funding/r?report=tender-897523&filter%5Bstatuses%5D%5B%5D=forecast&filter%5Bstatuses%5D%5B%5D=open&sorting%5Border%5D=desc&sorting%5Bfield%5D=updated_at" target="_blank" rel="noopener">
-<span class="emoji">💼</span>
-<span class="txt">Devex</span>
-<span class="go">›</span>
+<a class="link-row" href="https://docs.google.com/spreadsheets/d/1iQB_chFy_Auynx1PVUqhdWhY2FGaCVJp1VAdkP44YQs/edit?gid=1349915755#gid=1349915755" target="_blank" rel="noopener">
+<span class="ico">📊</span><span class="txt">사업 기회 분석 시스템</span><span class="go">↗</span>
 </a>
-<a class="link-btn navy" href="https://www.adb.org/news/events/business-opportunities-fair-2026" target="_blank" rel="noopener">
-<span class="emoji">📅</span>
-<span class="txt">ADB BOF 2026 행사 공고</span>
-<span class="go">›</span>
+<a class="link-row" href="https://docs.google.com/spreadsheets/d/1Dg2UNNLHQnci_iS4KyIBYkhiCVeqgGAA/edit?usp=drive_link" target="_blank" rel="noopener">
+<span class="ico">🏦</span><span class="txt">Korea Trust Fund List</span><span class="go">↗</span>
+</a>
+<a class="link-row" href="https://www.devex.com/funding/r?report=tender-897523&filter%5Bstatuses%5D%5B%5D=forecast&filter%5Bstatuses%5D%5B%5D=open&sorting%5Border%5D=desc&sorting%5Bfield%5D=updated_at" target="_blank" rel="noopener">
+<span class="ico">💼</span><span class="txt">Devex</span><span class="go">↗</span>
+</a>
+<a class="link-row" href="https://www.adb.org/news/events/business-opportunities-fair-2026" target="_blank" rel="noopener">
+<span class="ico">📅</span><span class="txt">ADB BOF 2026 행사 공고</span><span class="go">↗</span>
 </a>
 </div>
 
 <div class="callout">
-<span class="icon">🔒</span>
+<span>🔒</span>
 <span><strong>Devex 등 계정 ID·비밀번호는 김주하 과장에게 요청하세요.</strong> 보안을 위해 이 페이지에는 올리지 않습니다.</span>
 </div>
 </section>
 
-<section id="tracker">
-<div class="section-title"><span class="sq green"></span><h2>과제 진행 현황</h2></div>
-<p class="section-note">4차 회의(2026.09.10)에서 결정된 내용을 정리했습니다. 다음 회의에서 새로 업데이트됩니다.</p>
+<section class="block" id="tracker">
+<div class="sec-head">
+<p class="kicker">03 / Task tracker</p>
+<h2>과제 진행 현황</h2>
+<p>사업개발과 TFT 운영 과제의 담당자와 상태를 정리했습니다.</p>
+</div>
 
-<div class="task-group-label">사업개발 (24건 · 드랍 2건 포함)</div>
+<details class="tracker" id="trackerPanel">
+<summary>
+<span class="t-total">전체 <span data-count="total">28</span>건</span>
+<span class="t-stats">
+<span class="stat"><b data-count="progress">7</b>진행 중</span>
+<span class="stat"><b data-count="done">3</b>완료</span>
+<span class="stat"><b data-count="review">10</b>검토</span>
+<span class="stat"><b data-count="moved">3</b>이관</span>
+<span class="stat"><b data-count="dropped">5</b>드랍</span>
+</span>
+<span class="t-toggle"><span class="when-closed">펼쳐보기 ▾</span><span class="when-open">접기 ▴</span></span>
+</summary>
+<div class="t-body">
+<p class="note">5차 회의 이후 변경사항과 6차 회의안건지(2026.10.20)를 반영했습니다. 다음 회의 후 다시 업데이트됩니다.</p>
 
-<div class="task-card">
-<p class="name">라오스 직업교육 및 고용서비스 현대화 추진</p>
-<div class="rows">
+<div class="group-label">사업개발 <span>24건 · 드랍 5건 포함</span></div>
+<div class="task-grid">
+
+<div class="task-card is-dropped">
+<div class="head"><p class="name">라오스 직업교육 및 고용서비스 현대화 추진</p><span class="status-chip dropped">드랍</span></div>
 <div class="task-row"><span class="k">담당</span><span class="v">전홍민</span></div>
-<div class="task-row"><span class="k">상태</span><span class="v"><span class="status-chip mandatory">필수 추진</span></span></div>
-<div class="task-row"><span class="k">비고</span><span class="v">총 사업비 50만달러 내 WB 직원 인건비 등 관리비 포함 확인, 실익 낮을 것으로 판단(9.10). ADB BOF 출장 시 담당자 미팅으로 세부 확인 예정(전홍민, 권경덕)</span></div>
-</div>
+<div class="task-row"><span class="k">비고</span><span class="v">드랍 결정. 총 사업비 50만달러 내 WB 직원 인건비 등 관리비가 포함되어 실익이 낮다는 점이 확인된 바 있음(9.10)</span></div>
 </div>
 
 <div class="task-card">
-<p class="name">중남미 지방정부 재정건전성 및 재정위기관리 역량강화 (RG-T5066)</p>
-<div class="rows">
+<div class="head"><p class="name">중남미 지방정부 재정건전성 및 재정위기관리 역량강화 (RG-T5066)</p><span class="status-chip candidate">후보 검토</span></div>
 <div class="task-row"><span class="k">담당</span><span class="v">전홍민, 고준형</span></div>
-<div class="task-row"><span class="k">상태</span><span class="v"><span class="status-chip candidate">후보 검토</span></span></div>
 <div class="task-row"><span class="k">비고</span><span class="v">한국 경험 필요 사업. RG-T5066 스페인어→한국어 번역본 제공 완료(김주하). 중남미 재정 현황 전문가 확보·컨텍포인트 확인 등 세부 분석 후 사업개발 진행 예정(고준형)</span></div>
 </div>
-</div>
 
-<div class="task-card">
-<p class="name">아태지역 개도국 AI 도입 기반 마련 및 역량강화</p>
-<div class="rows">
+<div class="task-card is-dropped">
+<div class="head"><p class="name">아태지역 개도국 AI 도입 기반 마련 및 역량강화</p><span class="status-chip dropped">드랍</span></div>
 <div class="task-row"><span class="k">담당</span><span class="v">권경덕, 고준형</span></div>
-<div class="task-row"><span class="k">상태</span><span class="v"><span class="status-chip candidate">후보 검토</span></span></div>
-<div class="task-row"><span class="k">비고</span><span class="v">AI 솔루션 파트너 확보 필요</span></div>
-</div>
+<div class="task-row"><span class="k">비고</span><span class="v">드랍 결정. (기존 검토사항: AI 솔루션 파트너 확보 필요)</span></div>
 </div>
 
-<div class="task-card">
-<p class="name">말레이시아 기업경쟁력 제고 모니터링·평가체계 개선</p>
-<div class="rows">
+<div class="task-card is-dropped">
+<div class="head"><p class="name">말레이시아 기업경쟁력 제고 모니터링·평가체계 개선</p><span class="status-chip dropped">드랍</span></div>
 <div class="task-row"><span class="k">담당</span><span class="v">고준형, 권경덕</span></div>
-<div class="task-row"><span class="k">상태</span><span class="v"><span class="status-chip dropped">드랍</span></span></div>
 <div class="task-row"><span class="k">비고</span><span class="v">말레이 로컬 DB 여건상 KDS 수행·수주 모두 어려움이 예상되어 드랍(8.27)</span></div>
 </div>
-</div>
 
 <div class="task-card">
-<p class="name">몽골 민간투자 활성화 지속가능 관광산업 육성</p>
-<div class="rows">
+<div class="head"><p class="name">몽골 민간투자 활성화 지속가능 관광산업 육성</p><span class="status-chip progress">진행 중</span></div>
 <div class="task-row"><span class="k">담당</span><span class="v">권경덕</span></div>
-<div class="task-row"><span class="k">상태</span><span class="v"><span class="status-chip progress">진행 중</span></span></div>
 <div class="task-row"><span class="k">비고</span><span class="v">담당자 컨택 후 논의 진행 중</span></div>
 </div>
-</div>
 
 <div class="task-card">
-<p class="name">태국 금융부문 회복탄력성 강화 및 지속가능금융 솔루션 개발</p>
-<div class="rows">
+<div class="head"><p class="name">태국 금융부문 회복탄력성 강화 및 지속가능금융 솔루션 개발</p><span class="status-chip progress">진행 중</span></div>
 <div class="task-row"><span class="k">담당</span><span class="v">권경덕</span></div>
-<div class="task-row"><span class="k">상태</span><span class="v"><span class="status-chip progress">진행 중</span></span></div>
 <div class="task-row"><span class="k">비고</span><span class="v">담당자 컨택 후 논의 진행 중</span></div>
 </div>
-</div>
 
-<div class="task-card">
-<p class="name">미얀마 금융기반 강화 및 포용적·회복력 있는 성장 지원</p>
-<div class="rows">
+<div class="task-card is-dropped">
+<div class="head"><p class="name">미얀마 금융기반 강화 및 포용적·회복력 있는 성장 지원</p><span class="status-chip dropped">드랍</span></div>
 <div class="task-row"><span class="k">담당</span><span class="v">권경덕</span></div>
-<div class="task-row"><span class="k">상태</span><span class="v"><span class="status-chip dropped">드랍</span></span></div>
 <div class="task-row"><span class="k">비고</span><span class="v">수원국으로부터 사업 추진 어렵다는 회신 수령(8.27)</span></div>
 </div>
-</div>
 
 <div class="task-card">
-<p class="name">WB 르완다 PSGYE Skills</p>
-<div class="rows">
+<div class="head"><p class="name">WB 르완다 PSGYE Skills</p><span class="status-chip reviewing">추가 검토</span></div>
 <div class="task-row"><span class="k">담당</span><span class="v">전홍민</span></div>
-<div class="task-row"><span class="k">상태</span><span class="v"><span class="status-chip reviewing">추가 검토</span></span></div>
 <div class="task-row"><span class="k">비고</span><span class="v">공공센터·여가부 사업과 연계 검토, 관련부서 전달 완료</span></div>
 </div>
-</div>
 
 <div class="task-card">
-<p class="name">WB·ADB 네팔 Digital Transformation</p>
-<div class="rows">
+<div class="head"><p class="name">WB·ADB 네팔 Digital Transformation</p><span class="status-chip reviewing">추가 검토</span></div>
 <div class="task-row"><span class="k">담당</span><span class="v">전홍민</span></div>
-<div class="task-row"><span class="k">상태</span><span class="v"><span class="status-chip reviewing">추가 검토</span></span></div>
 <div class="task-row"><span class="k">비고</span><span class="v">추가 검토 필요</span></div>
 </div>
-</div>
 
 <div class="task-card">
-<p class="name">AIIB 인도네시아 Green Transition</p>
-<div class="rows">
+<div class="head"><p class="name">AIIB 인도네시아 Green Transition</p><span class="status-chip moved">이관</span></div>
 <div class="task-row"><span class="k">담당</span><span class="v">전홍민</span></div>
-<div class="task-row"><span class="k">상태</span><span class="v"><span class="status-chip done">이관</span></span></div>
 <div class="task-row"><span class="k">비고</span><span class="v">기후본부 검토 사업으로 전달 완료</span></div>
 </div>
-</div>
 
 <div class="task-card">
-<p class="name">AIIB 인도네시아 Climate Adaptation</p>
-<div class="rows">
+<div class="head"><p class="name">AIIB 인도네시아 Climate Adaptation</p><span class="status-chip moved">이관</span></div>
 <div class="task-row"><span class="k">담당</span><span class="v">전홍민</span></div>
-<div class="task-row"><span class="k">상태</span><span class="v"><span class="status-chip done">이관</span></span></div>
 <div class="task-row"><span class="k">비고</span><span class="v">기후본부 검토 사업으로 전달 완료</span></div>
 </div>
-</div>
 
 <div class="task-card">
-<p class="name">IBS 적합도 높은 사업 추가 검토</p>
-<div class="rows">
+<div class="head"><p class="name">IBS 적합도 높은 사업 추가 검토</p><span class="status-chip moved">이관</span></div>
 <div class="task-row"><span class="k">담당</span><span class="v">전홍민 (정보제공: 고준형)</span></div>
-<div class="task-row"><span class="k">상태</span><span class="v"><span class="status-chip done">이관</span></span></div>
 <div class="task-row"><span class="k">비고</span><span class="v">주제는 유지, 내년 연계 검토로 이관 완료</span></div>
 </div>
-</div>
 
 <div class="task-card">
-<p class="name">K-water 협력사업 타진</p>
-<div class="rows">
+<div class="head"><p class="name">K-water 협력사업 타진</p><span class="status-chip progress">진행 중</span></div>
 <div class="task-row"><span class="k">담당</span><span class="v">권경덕</span></div>
-<div class="task-row"><span class="k">상태</span><span class="v"><span class="status-chip progress">진행 중</span></span></div>
 <div class="task-row"><span class="k">비고</span><span class="v">담당자 컨택 후 논의 진행 중(3차 회의 공유 완료)</span></div>
 </div>
-</div>
 
 <div class="task-card">
-<p class="name">페루 지속가능 광업</p>
-<div class="rows">
+<div class="head"><p class="name">페루 지속가능 광업</p><span class="status-chip candidate">후보 검토</span></div>
 <div class="task-row"><span class="k">담당</span><span class="v">고준형</span></div>
-<div class="task-row"><span class="k">상태</span><span class="v"><span class="status-chip candidate">후보 검토</span></span></div>
 <div class="task-row"><span class="k">비고</span><span class="v">신규 추가(8.27). 폐광물 관련 기술 파트너 필요, 한국광해광업공단 컨택(전홍민)</span></div>
 </div>
-</div>
 
-<div class="task-card">
-<p class="name">Ready4AI 아프리카 포용적 AI 도입</p>
-<div class="rows">
+<div class="task-card is-dropped">
+<div class="head"><p class="name">Ready4AI 아프리카 포용적 AI 도입</p><span class="status-chip dropped">드랍</span></div>
 <div class="task-row"><span class="k">담당</span><span class="v">고준형, 권경덕</span></div>
-<div class="task-row"><span class="k">상태</span><span class="v"><span class="status-chip candidate">후보 검토</span></span></div>
-<div class="task-row"><span class="k">비고</span><span class="v">신규 추가(8.27, WB/KWPF). NIA·민간 AI기술 파트너 필요, 가나대사 관심 확인, 학교쪽 파트너 서칭 중</span></div>
-</div>
+<div class="task-row"><span class="k">비고</span><span class="v">드랍 결정. (기존 검토사항: WB/KWPF 사업, NIA·민간 AI기술 및 학교쪽 파트너 서칭 진행)</span></div>
 </div>
 
 <div class="task-card">
-<p class="name">ADB/EAKPF: Digital Development Facility Phase II</p>
-<div class="rows">
+<div class="head"><p class="name">ADB/EAKPF: Digital Development Facility Phase II</p><span class="status-chip candidate">후보 검토</span></div>
 <div class="task-row"><span class="k">담당</span><span class="v">고준형</span></div>
-<div class="task-row"><span class="k">상태</span><span class="v"><span class="status-chip candidate">후보 검토</span></span></div>
 <div class="task-row"><span class="k">비고</span><span class="v">신규 추가(8.27)</span></div>
 </div>
-</div>
 
 <div class="task-card">
-<p class="name">ADB/EAKPF: Promoting Learning and Innovation in Education to Future-Proof the Workforce</p>
-<div class="rows">
+<div class="head"><p class="name">ADB/EAKPF: Promoting Learning and Innovation in Education to Future-Proof the Workforce</p><span class="status-chip candidate">후보 검토</span></div>
 <div class="task-row"><span class="k">담당</span><span class="v">고준형</span></div>
-<div class="task-row"><span class="k">상태</span><span class="v"><span class="status-chip candidate">후보 검토</span></span></div>
 <div class="task-row"><span class="k">비고</span><span class="v">신규 추가(8.27)</span></div>
 </div>
-</div>
 
 <div class="task-card">
-<p class="name">MKCF: Mekong Connect - Agricultural Resilience and Modernization</p>
-<div class="rows">
+<div class="head"><p class="name">MKCF: Mekong Connect - Agricultural Resilience and Modernization</p><span class="status-chip candidate">후보 검토</span></div>
 <div class="task-row"><span class="k">담당</span><span class="v">고준형</span></div>
-<div class="task-row"><span class="k">상태</span><span class="v"><span class="status-chip candidate">후보 검토</span></span></div>
 <div class="task-row"><span class="k">비고</span><span class="v">신규 추가(8.27)</span></div>
 </div>
-</div>
 
 <div class="task-card">
-<p class="name">MKCF: 메콩 Computational Skills</p>
-<div class="rows">
+<div class="head"><p class="name">MKCF: 메콩 Computational Skills</p><span class="status-chip candidate">후보 검토</span></div>
 <div class="task-row"><span class="k">담당</span><span class="v">고준형</span></div>
-<div class="task-row"><span class="k">상태</span><span class="v"><span class="status-chip candidate">후보 검토</span></span></div>
 <div class="task-row"><span class="k">비고</span><span class="v">신규 추가(8.27)</span></div>
 </div>
-</div>
 
 <div class="task-card">
-<p class="name">GGGI/CTF: 파리협정 6조 Readiness·Mitigation Pipeline</p>
-<div class="rows">
+<div class="head"><p class="name">GGGI/CTF: 파리협정 6조 Readiness·Mitigation Pipeline</p><span class="status-chip candidate">후보 검토</span></div>
 <div class="task-row"><span class="k">담당</span><span class="v">고준형</span></div>
-<div class="task-row"><span class="k">상태</span><span class="v"><span class="status-chip candidate">후보 검토</span></span></div>
 <div class="task-row"><span class="k">비고</span><span class="v">신규 추가(8.27)</span></div>
 </div>
+
+<div class="task-card">
+<div class="head"><p class="name">ADB Steel Sector Decarbonization</p><span class="status-chip progress">진행 중</span></div>
+<div class="task-row"><span class="k">담당</span><span class="v">전홍민, 고준형</span></div>
+<div class="task-row"><span class="k">비고</span><span class="v">인도 철강기업 탈탄소 기술지원 사업(ADB Green Steel Technology Challenge). 정보세션 참여 및 협력업체 기술 확인 완료. Concept Note 제출(10.19), 결과는 6차 회의에서 공유 예정</span></div>
 </div>
 
 <div class="task-card">
-<p class="name">ADB Steel Sector Decarbonization</p>
-<div class="rows">
-<div class="task-row"><span class="k">담당</span><span class="v">전홍민, 고준형 (실무: 김야야 위원)</span></div>
-<div class="task-row"><span class="k">상태</span><span class="v"><span class="status-chip progress">진행 중</span></span></div>
-<div class="task-row"><span class="k">비고</span><span class="v">인도 철강기업 탈탄소 기술지원 사업(ADB Green Steel Technology Challenge). 8.31(월) 정보세션 참여 및 협력업체 기술 확인 완료. 사업제안 컨셉노트 준비(고준형, ~9.18), 출장 시 담당자 미팅(전홍민), 온라인 팀구성 필수여부 확인(김주하), 요구서류 준비(김주하, ~9월말)</span></div>
-</div>
-</div>
-
-<div class="task-card">
-<p class="name">EUROGIA 2030 3개국 콘소시엄 (한국·튀르키예·헝가리)</p>
-<div class="rows">
+<div class="head"><p class="name">EUROGIA 2030 3개국 콘소시엄 (한국·튀르키예·헝가리)</p><span class="status-chip progress">진행 중</span></div>
 <div class="task-row"><span class="k">담당</span><span class="v">권경덕</span></div>
-<div class="task-row"><span class="k">상태</span><span class="v"><span class="status-chip progress">진행 중</span></span></div>
-<div class="task-row"><span class="k">비고</span><span class="v">신규 추가(9.10). 콘소시엄 승인 완료, 사업 라벨 획득 추진 중. KDS 일반현황·기관소개 자료 등 발주처 요구서류 준비(김주하)</span></div>
-</div>
+<div class="task-row"><span class="k">비고</span><span class="v">신규 추가(9.10). 콘소시엄 승인 및 입찰서 제출(9.30) 완료, 결과는 6차 회의에서 공유 예정</span></div>
 </div>
 
 <div class="task-card">
-<p class="name">GGGI 협력 채널 구축</p>
-<div class="rows">
+<div class="head"><p class="name">GGGI 협력 채널 구축</p><span class="status-chip progress">진행 중</span></div>
 <div class="task-row"><span class="k">담당</span><span class="v">권경덕</span></div>
-<div class="task-row"><span class="k">상태</span><span class="v"><span class="status-chip candidate">후보 검토</span></span></div>
-<div class="task-row"><span class="k">비고</span><span class="v">신규 추가(9.10). 탄소감축 목적 달성에 유리한 국가 선정 후 제안 접수 예정</span></div>
-</div>
+<div class="task-row"><span class="k">비고</span><span class="v">신규 추가(9.10). 탄소감축 목적 달성에 유리한 대상 국가 선정 및 제안 준비 진행 중(6차 회의 공유 예정)</span></div>
 </div>
 
 <div class="task-card">
-<p class="name">필리핀 Leyte 지역 핵심광물 공단 조성 사업</p>
-<div class="rows">
+<div class="head"><p class="name">필리핀 Leyte 지역 핵심광물 공단 조성 사업</p><span class="status-chip candidate">후보 검토</span></div>
 <div class="task-row"><span class="k">담당</span><span class="v">권경덕</span></div>
-<div class="task-row"><span class="k">상태</span><span class="v"><span class="status-chip candidate">후보 검토</span></span></div>
-<div class="task-row"><span class="k">비고</span><span class="v">신규 추가(9.10). ADB BOF 출장 시 담당자 미팅하여 세부 확인 예정</span></div>
-</div>
+<div class="task-row"><span class="k">비고</span><span class="v">신규 추가(9.10). 5차 회의 후속 Action 진행상황은 6차 회의에서 공유 예정</span></div>
 </div>
 
-<div class="task-group-label">TFT운영 (4건)</div>
+</div>
+
+<div class="group-label">TFT 운영 <span>4건</span></div>
+<div class="task-grid">
 
 <div class="task-card">
-<p class="name">사업기회 분석 시스템(초기모델) 개발</p>
-<div class="rows">
+<div class="head"><p class="name">사업기회 분석 시스템(초기모델) 개발</p><span class="status-chip progress">진행 중</span></div>
 <div class="task-row"><span class="k">담당</span><span class="v">김주하 (제작: 김제문)</span></div>
-<div class="task-row"><span class="k">상태</span><span class="v"><span class="status-chip progress">진행 중</span></span></div>
 <div class="task-row"><span class="k">비고</span><span class="v">3차 회의 개발의견 반영 진행 중 — Devex 외 소스 확대, [판단]·[리포트] 탭 분리, 마감임박 기준(D-7→2주~60일) 조정 등(김주하, 김제문)</span></div>
 </div>
+
+<div class="task-card">
+<div class="head"><p class="name">TFT 웹사이트 계정 공유 (Devex 등)</p><span class="status-chip done">완료</span></div>
+<div class="task-row"><span class="k">담당</span><span class="v">김주하</span></div>
+<div class="task-row"><span class="k">비고</span><span class="v">TFT 멤버 대상 계정 공유 완료</span></div>
 </div>
 
 <div class="task-card">
-<p class="name">TFT 웹사이트 계정 공유 (Devex 등)</p>
-<div class="rows">
+<div class="head"><p class="name">ADB BOF 2026 출장</p><span class="status-chip done">완료</span></div>
 <div class="task-row"><span class="k">담당</span><span class="v">김주하</span></div>
-<div class="task-row"><span class="k">상태</span><span class="v"><span class="status-chip progress">진행 중</span></span></div>
-<div class="task-row"><span class="k">비고</span><span class="v">순차 배포 중</span></div>
-</div>
+<div class="task-row"><span class="k">비고</span><span class="v">전홍민 원장·권경덕 센터장 출장 완료. 체크리스트 취합, 출장 신청, 아시아지역 협업 컨설팅펌 선별(최우선 미팅 후보 S등급 2개사·A등급 25개사) 지원 완료</span></div>
 </div>
 
 <div class="task-card">
-<p class="name">ADB BOF 2026 출장</p>
-<div class="rows">
+<div class="head"><p class="name">KOAFEC 비즈니스 미팅 참가</p><span class="status-chip done">완료</span></div>
 <div class="task-row"><span class="k">담당</span><span class="v">김주하</span></div>
-<div class="task-row"><span class="k">상태</span><span class="v"><span class="status-chip progress">진행 중</span></span></div>
-<div class="task-row"><span class="k">비고</span><span class="v">전홍민 원장·권경덕 센터장 출장 확정, 항공권·호텔 예약 완료. 준비 체크리스트 취합·전달 및 참석 인원 출장 신청 완료(김주하). 협력 가능한 아시아지역 컨설팅펌 후보 리스트 작성, 출장 시 현지 미팅 타진 예정. 라오스·필리핀 Leyte·EUROGIA 등 각 사업 담당자 미팅 세부 확인 예정</span></div>
-</div>
+<div class="task-row"><span class="k">비고</span><span class="v">9.8(화)~9.11(금) 기간 중 우간다(9.9)·르완다(9.10) 대표단 1:1 비즈니스 미팅</span></div>
 </div>
 
-<div class="task-card">
-<p class="name">KOAFEC 비즈니스 미팅 참가 준비</p>
-<div class="rows">
-<div class="task-row"><span class="k">담당</span><span class="v">김주하</span></div>
-<div class="task-row"><span class="k">상태</span><span class="v"><span class="status-chip progress">진행 중</span></span></div>
-<div class="task-row"><span class="k">비고</span><span class="v">신규 추가(8.27). 9.8(화)~9.11(금) 기간 중 우간다(9.9)·르완다(9.10) 대표단 1:1 비즈니스 미팅</span></div>
 </div>
 </div>
+</details>
 </section>
 
 <footer>
-2026 Beyond ODA TFT · 4차 회의록(2026.09.10) 반영본입니다<br>
-작성 간사: 김주하 과장
+<span>2026 Beyond ODA TFT · 6차 회의안건지(2026.10.20) 반영본 · 작성 간사: 김주하 과장</span>
+<span class="mono">KDS · Beyond ODA</span>
 </footer>
 
-</div>
+</main>
 
 <dialog id="overviewDialog">
 <div class="modal-inner">
 <div class="modal-head">
-<h2>📋 TFT 소개</h2>
+<div>
+<p class="kicker">About</p>
+<h2>TFT 소개</h2>
+</div>
 <button type="button" class="modal-close" id="overviewClose" aria-label="닫기">✕</button>
 </div>
-<p class="section-note">Beyond ODA TFT가 무엇을 하는 조직인지 소개합니다.</p>
+<p class="intro">Beyond ODA TFT가 무엇을 하는 조직인지 소개합니다.</p>
 
 <div class="info-block">
 <h3>운영 목적</h3>
@@ -876,30 +883,25 @@ html { font-size: 17px; }
 </ul>
 </div>
 
+<div class="info-block">
+<h3>구성원</h3>
 <div class="member-grid">
 <div class="member-card">
 <div class="member-avatar">전</div>
-<h3>전홍민</h3>
-<p class="role">원장 · TFT장</p>
-<p class="desc">TFT 운영 총괄</p>
+<div><h4>전홍민</h4><p class="role">원장 · TFT장</p><p class="desc">TFT 운영 총괄</p></div>
 </div>
 <div class="member-card">
-<div class="member-avatar lightblue">권</div>
-<h3>권경덕</h3>
-<p class="role">센터장</p>
-<p class="desc">사업 개발 및 분석</p>
+<div class="member-avatar">권</div>
+<div><h4>권경덕</h4><p class="role">센터장</p><p class="desc">사업 개발 및 분석</p></div>
 </div>
 <div class="member-card">
-<div class="member-avatar orange">고</div>
-<h3>고준형</h3>
-<p class="role">선임연구위원</p>
-<p class="desc">사업 개발 및 분석</p>
+<div class="member-avatar">고</div>
+<div><h4>고준형</h4><p class="role">선임연구위원</p><p class="desc">사업 개발 및 분석</p></div>
 </div>
 <div class="member-card">
-<div class="member-avatar green">김</div>
-<h3>김주하</h3>
-<p class="role">과장 · 간사</p>
-<p class="desc">ODA 정보 취합, 회의 운영, 실무 지원</p>
+<div class="member-avatar">김</div>
+<div><h4>김주하</h4><p class="role">과장 · 간사</p><p class="desc">ODA 정보 취합, 회의 운영, 실무 지원</p></div>
+</div>
 </div>
 </div>
 </div>
@@ -907,7 +909,7 @@ html { font-size: 17px; }
 
 <script>
 (function () {
-var target = new Date(2026, 8, 30);
+var target = new Date(2026, 9, 20);
 var now = new Date();
 now.setHours(0,0,0,0);
 var diff = Math.round((target - now) / 86400000);
@@ -916,7 +918,7 @@ if (el) el.textContent = diff > 0 ? ('D-' + diff) : (diff === 0 ? 'D-DAY' : ('D+
 })();
 
 (function () {
-var sizes = { fsSmall: '16px', fsMed: '18px', fsBig: '21px' };
+var sizes = { fsSmall: '15px', fsMed: '17px', fsBig: '19px' };
 var buttons = Object.keys(sizes).map(function (id) { return document.getElementById(id); });
 buttons.forEach(function (btn) {
 btn.addEventListener('click', function () {
@@ -935,6 +937,49 @@ openBtn.addEventListener('click', function () { dialog.showModal(); });
 closeBtn.addEventListener('click', function () { dialog.close(); });
 dialog.addEventListener('click', function (e) {
 if (e.target === dialog) dialog.close();
+});
+})();
+
+(function () {
+var panel = document.getElementById('trackerPanel');
+if (!panel) return;
+var counts = { progress: 0, done: 0, candidate: 0, reviewing: 0, mandatory: 0, moved: 0, dropped: 0 };
+panel.querySelectorAll('.status-chip').forEach(function (c) {
+Object.keys(counts).forEach(function (k) { if (c.classList.contains(k)) counts[k]++; });
+});
+function setCount(name, val) {
+var n = document.querySelector('[data-count="' + name + '"]');
+if (n) n.textContent = val;
+}
+setCount('total', panel.querySelectorAll('.task-card').length);
+setCount('progress', counts.progress);
+setCount('done', counts.done);
+setCount('review', counts.candidate + counts.reviewing + counts.mandatory);
+setCount('moved', counts.moved);
+setCount('dropped', counts.dropped);
+function openIfHash() { if (location.hash === '#tracker') panel.open = true; }
+openIfHash();
+window.addEventListener('hashchange', openIfHash);
+document.querySelectorAll('a[href="#tracker"]').forEach(function (a) {
+a.addEventListener('click', function () { panel.open = true; });
+});
+})();
+
+(function () {
+var links = document.querySelectorAll('.side-dots a');
+if (!links.length || !('IntersectionObserver' in window)) return;
+var map = {};
+links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+var obs = new IntersectionObserver(function (entries) {
+entries.forEach(function (e) {
+if (!e.isIntersecting) return;
+links.forEach(function (a) { a.classList.remove('active'); });
+if (map[e.target.id]) map[e.target.id].classList.add('active');
+});
+}, { rootMargin: '-45% 0px -50% 0px' });
+Object.keys(map).forEach(function (id) {
+var s = document.getElementById(id);
+if (s) obs.observe(s);
 });
 })();
 </script>
