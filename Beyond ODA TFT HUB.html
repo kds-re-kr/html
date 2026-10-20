@@ -350,8 +350,8 @@ details.tracker > summary { padding: 18px 16px; }
 <div class="dday" id="ddayValue">D-1</div>
 <div>
 <div class="label">Next meeting</div>
-<div class="desc">6차 회의 · 10월 20일(화) 오전 10시</div>
-<div class="sub">원장실 · 주요 제안서 제출 결과 공유</div>
+<div class="desc">7차 회의 · 11월 10일(화) 오전 10시</div>
+<div class="sub">이후 8차 회의 11월 24일(화) 오전 10시</div>
 </div>
 </div>
 
@@ -549,11 +549,11 @@ details.tracker > summary { padding: 18px 16px; }
 </div>
 </details>
 
-<details class="meeting" open="">
+<details class="meeting">
 <summary>
 <span class="m-num">06</span>
 <span class="m-date">2026.10.20(화)</span>
-<span class="pill next">다음 회의</span>
+<span class="pill done">완료</span>
 <a class="m-link ghost" href="https://drive.google.com/file/d/1ky07qpW_6pWSCM3yilczjj6JxJKQBLrq/view?usp=drive_link" target="_blank" rel="noopener" onclick="event.stopPropagation()">안건지 ↗</a>
 <span class="m-title">주요 제안서 제출 결과 공유 및 5차 할당 과제 점검</span>
 <span class="m-toggle" aria-hidden="true">▾</span>
@@ -576,23 +576,37 @@ details.tracker > summary { padding: 18px 16px; }
 <li>중남미 지방정부 재정건전성·재정위기관리 역량강화(RG-T5066): 재정 전문가 확보 결과 및 사업개발 진행상황 — 고준형</li>
 <li>기타: ADB Smart Livable Cities in Asia and the Pacific Region 사업 검토 결과(권경덕), 추가 의견 나눔</li>
 </ul>
-<h4>차기 회의</h4>
+<h4>차기 회의 일정</h4>
 <ul>
-<li>7차 회의 일정은 이번 회의에서 협의 후 확정합니다.</li>
+<li>7차 11.10(화) 10:00, 8차 11.24(화) 10:00</li>
 </ul>
+<p class="note">회의 안건지 기준 내용입니다. 회의록 원문이 등록되면 결정사항을 추가합니다.</p>
+</div>
+</details>
+
+<details class="meeting" open="">
+<summary>
+<span class="m-num">07</span>
+<span class="m-date">2026.11.10(화)</span>
+<span class="pill next">다음 회의</span>
+<span class="m-title">안건 등록 전</span>
+<span class="m-toggle" aria-hidden="true">▾</span>
+</summary>
+<div class="m-body">
+<p class="note">오전 10시 시작 예정입니다. 안건지가 나오면 업데이트합니다.</p>
 </div>
 </details>
 
 <details class="meeting">
 <summary>
-<span class="m-num">07</span>
-<span class="m-date">일정 미정</span>
+<span class="m-num">08</span>
+<span class="m-date">2026.11.24(화)</span>
 <span class="pill">예정</span>
-<span class="m-title">6차 회의에서 일정 확정 예정</span>
+<span class="m-title">안건 등록 전</span>
 <span class="m-toggle" aria-hidden="true">▾</span>
 </summary>
 <div class="m-body">
-<p class="note">6차 회의(10.20)에서 협의 후 일정이 확정되면 업데이트합니다.</p>
+<p class="note">오전 10시 시작 예정입니다.</p>
 </div>
 </details>
 
@@ -640,7 +654,10 @@ details.tracker > summary { padding: 18px 16px; }
 <span class="ico">💼</span><span class="txt">Devex</span><span class="go">↗</span>
 </a>
 <a class="link-row" href="https://www.adb.org/news/events/business-opportunities-fair-2026" target="_blank" rel="noopener">
-<span class="ico">📅</span><span class="txt">ADB BOF 2026 행사 공고</span><span class="go">↗</span>
+<span class="ico">📅</span><span class="txt">ADB BOF 2026 행사</span><span class="go">↗</span>
+</a>
+<a class="link-row" href="https://challenges.adb.org/en/challenges/tic-steel" target="_blank" rel="noopener">
+<span class="ico">🏭</span><span class="txt">ADB Green Steel Challenge</span><span class="go">↗</span>
 </a>
 </div>
 
@@ -924,7 +941,7 @@ details.tracker > summary { padding: 18px 16px; }
 
 <script>
 (function () {
-var target = new Date(2026, 9, 20);
+var target = new Date(2026, 10, 10);
 var now = new Date();
 now.setHours(0,0,0,0);
 var diff = Math.round((target - now) / 86400000);
