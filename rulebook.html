@@ -1,219 +1,446 @@
-
-
 <!DOCTYPE html>
-
 <html lang="ko">
 <head>
-<meta charset="utf-8"/>
-<title>KDS RuleBook 🚀GO!</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>KDS Rulebook Go!</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&display=swap">
 <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      background-color: #f6f8fa;
-      margin: 0;
-      padding: 40px;
-    }
-    h1 {
-      text-align: center;
-      color: #2c3e50;
-    }
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-evenly;
-      gap: 20px;
-      margin-top: 30px;
-    }
-    .card {
-      background-color: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      width: 15%;
-      min-width: 140px;
-      padding: 24px;
-      transition: 0.3s;
-    }
-    .card:hover {
-      box-shadow: 0 8px 12px rgba(0,0,0,0.15);
-    }
-    .emoji {
-      font-size: 28px;
-      margin-bottom: 12px;
-    }
-    .title {
-      font-size: 18px;
-      font-weight: bold;
-      margin-bottom: 10px;
-      color: #2c3e50;
-    }
-    .desc {
-      font-size: 14px;
-      color: #555;
-      margin-bottom: 10px;
-    }
-    ul {
-      padding-left: 18px;
-      font-size: 14px;
-      color: #333;
-    }
-    ul li {
-      margin-bottom: 6px;
-    }
-    ul li a {
-      text-decoration: none;
-      color: #007acc;
-    }
-    ul li a:hover {
-      text-decoration: underline;
-    }
-  </style>
+/* 레이아웃: 블러 상단바 → 모눈 히어로(검색, 낮은 높이) → 01 상황 타일 4×2 → 02 분야 카드 3열 → 03 제정 예정 → 04 생활 안내 → 바닥 안내.
+   색: KDS 브랜드(BLUE #223F99 · LIGHT BLUE #0088CB · ORANGE #F79332 · GREEN #4AAA76), 위계 태그는 같은 계열의 진한 톤 */
+:root{
+  --kds-blue:#223F99; --kds-lblue:#0088CB; --kds-orange:#F79332; --kds-green:#4AAA76; --kds-silver:#A6A6A6; --kds-gold:#A89976;
+  --bg:#F4F6FA; --card:#FFFFFF; --soft:#EEF2F8; --soft-2:#E3E9F2; --line:#D9E0EA; --line-2:#E8EDF4;
+  --ink:#16213A; --ink-2:#3A465C; --ink-3:#66728A;
+  --navy:#223F99; --navy-ink:#FFFFFF; --sky:#0088CB;
+  --t-r:#223F99; --t-s:#2C7A50; --t-g:#B4600F; --t-n:#7A8597;
+  --hl:#FFE89A; --focus:#0088CB; --grid:rgba(34,63,153,.07);
+  --wait:#8A6A1F; --wait-bg:#FBF1DA; --ok:#2C7A50; --ok-bg:#E3F3E9;
+  --shadow:0 1px 2px rgba(22,33,58,.04),0 12px 30px rgba(34,63,153,.10);
+  --sans:"Pretendard Variable","Pretendard","IBM Plex Sans KR","Malgun Gothic","Apple SD Gothic Neo",system-ui,sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#10141B; --card:#181E28; --soft:#1F2633; --soft-2:#273041; --line:#323C4D; --line-2:#262E3B;
+  --ink:#E8ECF3; --ink-2:#C3CBD8; --ink-3:#8E99AC;
+  --navy:#8EA9F0; --navy-ink:#10141B; --sky:#5CC1F2;
+  --t-r:#8EA9F0; --t-s:#77CE9E; --t-g:#F7AE68; --t-n:#8E99AC;
+  --hl:#5A4A12; --focus:#5CC1F2; --grid:rgba(142,169,240,.08);
+  --wait:#E0BA6A; --wait-bg:#3A301A; --ok:#77CE9E; --ok-bg:#1C3227;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 30px rgba(0,0,0,.45); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#10141B; --card:#181E28; --soft:#1F2633; --soft-2:#273041; --line:#323C4D; --line-2:#262E3B;
+  --ink:#E8ECF3; --ink-2:#C3CBD8; --ink-3:#8E99AC;
+  --navy:#8EA9F0; --navy-ink:#10141B; --sky:#5CC1F2;
+  --t-r:#8EA9F0; --t-s:#77CE9E; --t-g:#F7AE68; --t-n:#8E99AC;
+  --hl:#5A4A12; --focus:#5CC1F2; --grid:rgba(142,169,240,.08);
+  --wait:#E0BA6A; --wait-bg:#3A301A; --ok:#77CE9E; --ok-bg:#1C3227;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 30px rgba(0,0,0,.45); color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.6;word-break:keep-all;overflow-wrap:anywhere;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
+button,input{font-family:inherit;font-size:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
+[hidden]{display:none!important}
+.wrap{max-width:1200px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.zoom{zoom:var(--z,1)}
+.kicker{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin:0 0 6px}
+.kicker b{color:var(--navy);font-weight:700}
+
+/* 상단바 (반투명 블러) */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 82%,transparent);-webkit-backdrop-filter:saturate(1.4) blur(12px);backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:10px}
+.logo{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:16px;letter-spacing:-.02em;color:var(--ink);text-decoration:none}
+.logo .lg{background:#fff;border-radius:7px;padding:4px 7px;display:flex;border:1px solid var(--line-2)}
+.logo img{height:16px;display:block}
+.logo em{font-style:normal;color:var(--navy)}
+.tools{display:flex;align-items:center;gap:8px}
+.theme-btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--ink);padding:0 12px;min-height:34px;font-size:12.5px;font-weight:700}
+.theme-btn:hover{border-color:var(--ink-2)}
+.fontctrl{display:flex;align-items:center;gap:2px;border:1px solid var(--line);border-radius:999px;padding:3px;background:var(--card)}
+.fontctrl button{background:transparent;border:0;color:var(--ink-3);border-radius:999px;min-width:30px;min-height:26px;font-weight:800;line-height:1;padding:0 6px}
+.fontctrl button:hover{color:var(--ink)}
+.fontctrl button[aria-pressed="true"]{background:var(--navy);color:var(--navy-ink)}
+
+/* 히어로 (모눈 배경, 낮은 높이) */
+.hero{position:relative;padding:36px 0 30px;text-align:center;overflow:hidden;border-bottom:1px solid var(--line);background:var(--card)}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:40px 40px;-webkit-mask-image:radial-gradient(ellipse at center,#000 30%,transparent 75%);mask-image:radial-gradient(ellipse at center,#000 30%,transparent 75%)}
+.hero .wrap{position:relative}
+.brandbar{display:flex;justify-content:center;gap:5px;margin:0 0 12px}
+.brandbar i{display:block;width:22px;height:6px;transform:skewX(-35deg);border-radius:1px}
+.hero h1{font-size:clamp(30px,4.4vw,44px);line-height:1.1;letter-spacing:-.035em;margin:0;font-weight:300}
+.hero h1 strong{font-weight:800;color:var(--navy)}
+.lead{margin:10px auto 0;max-width:34em;color:var(--ink-3);font-size:15px}
+.sbox{margin:20px auto 0;max-width:640px;display:flex;align-items:center;gap:6px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:5px 5px 5px 16px;box-shadow:var(--shadow);text-align:left;transition:border-color .15s}
+.sbox:focus-within{border-color:var(--navy)}
+.sbox svg{width:20px;height:20px;flex:0 0 auto;stroke:var(--ink-3);fill:none;stroke-width:2}
+.sbox input{flex:1;min-width:0;border:0;outline:0;background:none;color:var(--ink);font-size:16px;padding:11px 8px}
+.sbox input::placeholder{color:var(--ink-3)}
+.sbox .x{border:0;background:var(--soft);color:var(--ink-3);border-radius:999px;width:28px;height:28px;font-size:13px;flex:0 0 auto}
+.sbox .go{border:0;background:var(--navy);color:var(--navy-ink);border-radius:11px;padding:10px 20px;font-weight:700;font-size:15px;flex:0 0 auto}
+.sbox .go:hover{filter:brightness(1.1)}
+.chips{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:7px;margin:12px auto 0;max-width:760px}
+.chips .lb{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-right:4px}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--ink-2);border-radius:18px;padding:4px 12px;font-size:13px}
+.chip:hover{border-color:var(--navy);color:var(--navy)}
+.jump{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:16px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:8px 15px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-weight:700;font-size:13.5px;text-decoration:none;min-height:40px;transition:border-color .15s,transform .15s}
+.btn:hover{border-color:var(--ink-2);transform:translateY(-1px)}
+.btn.primary{background:var(--navy);color:var(--navy-ink);border-color:var(--navy)}
+.btn .arr{opacity:.75}
+.kbd{display:inline-block;font-size:11px;border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:0 5px;margin:0 2px;color:var(--ink-2);background:var(--card)}
+
+/* 섹션 */
+section.blk{margin-top:44px;scroll-margin-top:70px}
+.sh{margin-bottom:14px}
+.sh .row{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.sh h2{margin:0;font-size:22px;letter-spacing:-.025em;font-weight:800}
+.sh p{margin:0;color:var(--ink-3);font-size:13.5px}
+.sh .lg-r{margin-left:auto;font-size:12.5px;color:var(--ink-3);display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+
+/* 상황 타일 */
+.sit{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.st{display:flex;align-items:flex-start;gap:12px;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;color:var(--ink);transition:border-color .15s,box-shadow .15s,transform .15s}
+.st:hover{border-color:var(--navy);box-shadow:0 6px 16px rgba(34,63,153,.10);transform:translateY(-1px)}
+.st[aria-expanded="true"]{border-color:var(--navy);background:var(--soft);box-shadow:inset 0 0 0 1px var(--navy)}
+.st .em{font-size:26px;line-height:1;flex:0 0 auto;margin-top:2px}
+.st b{display:block;font-size:15.5px;letter-spacing:-.01em}
+.st small{display:block;color:var(--ink-3);font-size:12.5px;margin-top:2px;line-height:1.45}
+.sitp{margin-top:12px;background:var(--card);border:1px solid var(--navy);border-radius:16px;padding:16px 18px}
+.sitp .hd{display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap}
+.sitp .hd b{font-size:16px}
+.sitp .hd .tip{color:var(--ink-3);font-size:13px}
+.close{margin-left:auto;background:var(--soft);border:0;border-radius:999px;width:32px;height:32px;color:var(--ink-3);font-size:13px}
+.close:hover{color:var(--ink)}
+.sitp ol{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:6px 18px}
+
+/* 항목 */
+.item{display:flex;align-items:flex-start;gap:8px;width:100%;text-align:left;background:none;border:0;border-radius:8px;padding:6px 8px;color:var(--ink);font-size:14.5px;line-height:1.5;text-decoration:none}
+.item:hover{background:var(--soft)}
+.item:hover .nm{color:var(--navy);text-decoration:underline;text-underline-offset:3px}
+.item .go{flex:0 0 auto;color:var(--ink-3);font-size:13px;padding-top:1px;opacity:.7}
+.item:hover .go{color:var(--navy);opacity:1}
+.tag{font-style:normal;flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;min-width:36px;height:20px;border-radius:5px;font-size:11px;font-weight:600;color:var(--card);padding:0 6px;margin-top:1px}
+.tag.r{background:var(--t-r)} .tag.s{background:var(--t-s)} .tag.g{background:var(--t-g)} .tag.n{background:var(--t-n)}
+.item .bd{flex:1;min-width:0}
+.item .nm{font-weight:500}
+.item .why{display:block;font-size:12.5px;color:var(--ink-3)}
+.item .why b{color:var(--ink-2);font-weight:500}
+.item .also{font-size:11px;color:var(--ink-3);border:1px solid var(--line);border-radius:4px;padding:0 5px;margin-left:6px;white-space:nowrap}
+mark{background:var(--hl);color:inherit;border-radius:2px;padding:0 1px}
+
+/* 분야 카드 */
+.cats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:stretch}
+.cat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 14px 12px;min-width:0}
+.cat .ch{display:flex;align-items:center;gap:10px;padding:0 4px 10px;border-bottom:1px solid var(--line-2);margin-bottom:6px}
+.cat .em{width:38px;height:38px;border-radius:10px;background:var(--soft);display:flex;align-items:center;justify-content:center;font-size:20px;flex:0 0 auto;position:relative;overflow:hidden}
+.cat .em::after{content:"";position:absolute;left:-4px;bottom:0;width:20px;height:4px;transform:skewX(-35deg);background:var(--band)}
+.cat .ch b{display:block;font-size:16.5px;letter-spacing:-.01em}
+.cat .ch small{display:block;color:var(--ink-3);font-size:12.5px;line-height:1.4}
+.cat .no{margin-left:auto;align-self:flex-start;font-size:11px;color:var(--ink-3);background:var(--soft);border-radius:5px;padding:1px 6px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.cat ul{list-style:none;margin:0;padding:0}
+.cat .more{width:100%;border:0;background:none;color:var(--navy);font-size:13px;font-weight:600;padding:8px 8px 2px;text-align:left}
+
+/* 띠 */
+.strip{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+.newgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.newc{display:flex;gap:10px;align-items:flex-start;text-align:left;border:1px dashed var(--line);border-radius:12px;background:var(--bg);padding:10px 12px;color:var(--ink)}
+.newc:hover{border-color:var(--navy)}
+.newc b{display:block;font-size:14.5px}
+.newc small{display:block;color:var(--ink-3);font-size:12px}
+.soon{font-size:11px;font-weight:600;border-radius:4px;padding:0 6px;color:var(--wait);background:var(--wait-bg);margin-left:4px}
+.life{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:4px 14px;list-style:none;margin:0;padding:0}
+
+/* 검색 결과 */
+.res{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+.res .hd{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.res .hd b{font-size:16px}
+.res .hd .cnt{color:var(--ink-3);font-size:13px}
+.res ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:2px 18px}
+.none{text-align:center;padding:24px 10px;color:var(--ink-2)}
+.none .chips{margin-top:10px}
+
+/* 바닥 */
+.foot{margin-top:48px;border-top:1px solid var(--line);padding-block:20px 36px;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:24px;font-size:13.5px;color:var(--ink-2)}
+.foot h3{margin:0 0 8px;font-size:14.5px;color:var(--ink)}
+.foot ol{margin:0;padding-left:18px;line-height:1.85}
+.foot .ask{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.foot .ask button{margin-top:10px;border:0;background:var(--navy);color:var(--navy-ink);border-radius:9px;padding:8px 14px;font-weight:600;font-size:13.5px}
+.legend{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px;font-size:12.5px;color:var(--ink-3)}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.legend .tag{min-width:30px;height:18px;font-size:10.5px}
+.fline{margin-top:48px;border-top:1px solid var(--line);padding-block:18px 36px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.upd{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-top:14px}
+
+/* 측면 섹션 점 */
+.side-dots{position:fixed;right:22px;top:50%;transform:translateY(-50%);display:none;flex-direction:column;gap:12px;z-index:15}
+.side-dots a{display:flex;align-items:center;justify-content:flex-end;gap:10px;text-decoration:none;color:var(--ink-3);font-size:12px;font-weight:700}
+.side-dots a i{display:block;width:10px;height:2px;background:var(--line);transition:width .2s,background .2s}
+.side-dots a span{opacity:0;transition:opacity .2s}
+.side-dots a:hover span,.side-dots a.active span{opacity:1}
+.side-dots a.active{color:var(--navy)}
+.side-dots a.active i{width:22px;background:var(--navy)}
+@media (min-width:1380px){.side-dots{display:flex}}
+
+/* 사용법 안내창 */
+dialog{max-width:540px;width:calc(100vw - 32px);border:1px solid var(--line);border-radius:20px;padding:0;background:var(--card);color:var(--ink);box-shadow:0 24px 64px rgba(0,0,0,.25)}
+dialog::backdrop{background:rgba(10,14,24,.5)}
+.modal-inner{padding:24px;max-height:84vh;overflow-y:auto}
+.modal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.modal-head .kicker{margin:0}
+.modal-head h2{margin:6px 0 0;font-size:22px;font-weight:800;letter-spacing:-.02em}
+.modal-inner .intro{color:var(--ink-2);font-size:14px;margin:8px 0 14px}
+.info-block{border-top:1px solid var(--line);padding:14px 0}
+.info-block h3{margin:0 0 6px;font-size:12px;font-weight:800;color:var(--ink-3);letter-spacing:.04em}
+.info-block ol,.info-block ul{margin:0;padding-left:1.2em;font-size:14px}
+.info-block li{margin-bottom:4px}
+
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:#16213A;color:#fff;font-size:13.5px;padding:10px 18px;border-radius:10px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:60;max-width:90vw;text-align:center}
+.toast.on{opacity:1}
+
+@media (max-width:980px){.sit{grid-template-columns:repeat(2,minmax(0,1fr))}.cats{grid-template-columns:repeat(2,minmax(0,1fr))}.newgrid{grid-template-columns:1fr}.foot{grid-template-columns:1fr}}
+@media (max-width:620px){.cats{grid-template-columns:1fr}.st{padding:12px}.st small{display:none}.sbox .go{padding:10px 14px}.sitp ol,.res ul{grid-template-columns:1fr}.theme-btn .lbl{display:none}.tools{gap:5px}.logo .lt,#folderBtn .ar{display:none}.theme-btn{padding:0 10px}.hero{padding:28px 0 24px}.jump{display:grid;grid-template-columns:1fr 1fr}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
+</style>
 </head>
 <body>
-<h1>KDS RuleBook 🚀GO!</h1>
-<!-- 🔍 검색창 삽입 -->
-<div style="text-align: center; margin-top: 10px; margin-bottom: 30px;">
-<input id="searchInput" placeholder="검색어를 입력하세요" style="padding: 10px; width: 280px; font-size: 14px; border: 1px solid #ccc; border-radius: 6px;" type="text"/>
-<button style="padding: 10px 12px; margin-left: 6px; font-size: 14px; background-color: #007acc; color: white; border: none; border-radius: 6px; cursor: pointer;">
-    🔍
-  </button>
-<button onclick="document.getElementById('popup').style.display='block'" style="padding: 10px 12px; margin-left: 6px; font-size: 14px; background-color: #f39c12; color: white; border: none; border-radius: 6px; cursor: pointer;">
-    📘 사용법 안내
-  </button>
-<a href="https://drive.google.com/drive/folders/1rMe8bIJq6dr8Eo-Uw4ii9Ot1ce6tH75v?usp=drive_link" style="margin-left: 10px; font-size: 14px; color: #2c3e50; text-decoration: none; background-color: #ecf0f1; padding: 10px 14px; border-radius: 6px; display: inline-block;" target="_blank">📂 전체 규정 폴더 바로가기</a></div>
-<div id="popup" style="display:none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; max-width: 600px; background-color: white; border: 1px solid #ccc; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 9999; padding: 20px; font-size: 14px; text-align: left;">
-<h3>KDS RuleBook 🚀GO! 사용 방법</h3>
-<p>업무 중 “이럴 땐 어떤 규정을 봐야 하지?” 하고 고민된 적 있으셨나요?<br/>이제는 더 이상 규정 찾느라 헤매지 마세요.</p>
-<p><strong>KDS RuleBook 🚀GO!</strong>는<br/>누구나 손쉽게 회사의 주요 규정들을 찾아볼 수 있도록 만든 규정 바로가기 대시보드입니다.</p>
-<p><strong>📌 주요 기능</strong><br/>
-<strong>1. 분야별 규정 모아보기</strong><br/>
-  “조직, 복무, 사업관리, 사내 시스템” 등<br/>
-  각 규정이 유형별로 보기 쉽게 정리되어 있어요. 원하는 규정을 찾아 클릭만 하면 됩니다!</p>
-<p><strong>2. 키워드 검색 지원</strong><br/>
-  ①정확한 규정 이름이 생각나지 않는다면?<br/>
-  ②또는 특정 내용이 알고 싶은데 어느 규정에 들어있는지 모르겠다면?<br/>
- 떠오르는 키워드만 입력해보세요.<br/>
-예를 들어, ‘경조’라고 입력하면 ‘경조휴가’가 포함된 취업규칙을 보여줍니다!</p>
-<p><strong>🔍 사용 방법</strong><br/>
-  1. 상단 검색창에 키워드를 입력합니다. (예: “출장”, “휴가”, “정보보안”)<br/>
-  2. 관련된 규정 목록이 자동으로 필터링됩니다.<br/>
-  3. 규정 이름을 클릭하면 바로 내용을 확인할 수 있습니다.</p>
-<p><strong>✔️ 규정은 계속 업데이트됩니다.</strong><br/>
-  사용 중 개선 아이디어가 있다면 기획관리실로 알려주세요!</p>
-<div style="text-align: center; margin-top: 20px;">
-<button onclick="document.getElementById('popup').style.display='none'" style="padding: 8px 16px; background-color: #ccc; border: none; border-radius: 6px; cursor: pointer;">닫기</button>
-</div>
-</div>
-<div class="container">
-<div class="card">
-<div class="emoji">🙋</div>
-<div class="title">인사·복무</div>
-<div class="desc">취업규칙, 인사규정, 안전관리, 복리후생, 재택근무 등</div>
-<ul>
-<li data-keywords="채용, 임용, 수습기간, 제출서류, 복무, 성희롱, 품위유지, 사원증, 비상출근, 결근, 지각, 조퇴, 외출, 출장업무, 공민권, 근로조건, 근로시간, 시차출퇴근제, 재택근무, 휴게시간, 연장근무, 야간 및 휴일근로, 육아시간, 주휴일, 정휴일, 휴일대체, 연차유급휴가, 연차휴가, 생리휴가, 임산부의 보호, 태아검진, 배우자 출산휴가, 난임치료휴가, 병가, 공가, 경조휴가, 대체휴가, 특별휴가, 육아휴직, 육아기 근로시간 단축, 가족돌봄, 복직, 임금, 연봉계약, 임금산정, 상여금, 퇴직금, 정년, 해고, 표창, 징계, 안전수칙, 건강진단, 건강검진, 직장내괴롭힘금지, 재해보상"><a href="https://drive.google.com/file/d/12TvU10buMb1WycHByWfqksjC9xry4-dY/view?usp=drive_link" target="_blank"> [규정] 취업규칙</a></li>
-<li data-keywords="인사위원회, 근무평가, 승진, 교육훈련, 임용 자격기준"><a href="https://drive.google.com/file/d/1Z3jCGc-Z5fFj52Q7lghCULFUtI21tYI1/view?usp=drive_link" target="_blank"> [규정] 인사규정</a></li>
-<li><a href="https://drive.google.com/file/d/15e-wW_v90Klj4NkjBXQPnoCunSO_7q9i/view?usp=drive_link/view?usp=drive_link" target="_blank">[규정] 경조휴가 및 경조금 규정</a></li>
-<li><a href="https://drive.google.com/file/d/1Fe5NkPsdBGPqJmpiVY3_6zS5cW8f6WBy/view?usp=drive_link" target="_blank">[규정] 대체휴가 규정</a></li>
-<li><a href="https://drive.google.com/file/d/1eJip-8E7jvxAVBK1_nPYLfYgTCBClJki/view?usp=drive_link" target="_blank">[규정] 성희롱·성폭력 예방 규정</a></li>
-<li><a href="https://drive.google.com/file/d/1YtH3z_-BlKEp-dOOBHGyQQpZ9fw3gyZO/view?usp=drive_link" target="_blank">[규정] 안전관리 규정</a></li>
-<li><a href="https://drive.google.com/file/d/1KCl7Azm2u3T3VSJ7I6JOOQwupZ3nPs7E/view?usp=drive_link" target="_blank">[규정] 출장여비 규정</a></li>
-<li><a href="https://drive.google.com/file/d/1naXu51Hmj4ltAWDPV4GIJE5c-MwlGe31/view?usp=drive_link" target="_blank">[규정] 해외 장기파견인력 복무규정</a></li>
-<li data-keywords="조직활성화비, 선택적복리후생제도, 자격증취득, 사내동아리, 사내추천, 경조휴가 및 경조금 규정, 장기근속포상제도"><a href="https://drive.google.com/file/d/1M3vI8KlkNOX92z4U9GsZlNsOsH3bdpzI/view?usp=drive_link" target="_blank">[지침] 복리후생비 규정지침 모음</a></li>
-<li><a href="https://drive.google.com/file/d/1zOUfNNsV7j5DeiCmD8VUjAB7npUjyAHm/view?usp=drive_link" target="_blank">[지침] 근무수칙</a></li>
-<li><a href="https://drive.google.com/file/d/1M_pjwzYg6Ox9dGqQ5Y_nLlvN2UIovMWV/view?usp=drive_link/view?usp=drive_link" target="_blank">[지침] 온보딩 프로그램</a></li>
-<li><a href="https://drive.google.com/file/d/1-uyFW7rysCdaTHT6xvaaY3z6FfbTeRYB/view?usp=drive_link" target="_blank">[지침] 장기근속포상제도 운영지침</a></li>
-<li><a href="https://drive.google.com/file/d/1GeCNEC-VPfJO0azPyL1Qagknpi0jWYyk/view?usp=drive_link" target="_blank">[매뉴얼] 재택근무제 매뉴얼</a></li>
-<li><a href="https://drive.google.com/file/d/1sQ1MJTWdyV7p4kDsZrRnAtrfm3v0yMZ3/view?usp=drive_link" target="_blank">[매뉴얼] Flex Day(시차출퇴근제) 운영매뉴얼</a></li>
-<li><a href="https://drive.google.com/file/d/1hUTCMdeG6nLpgZ0QvjxsAqmY77pYuYlX/view?usp=drive_link" target="_blank">[매뉴얼] 출장업무 매뉴얼</a></li>
-<li><a href="https://drive.google.com/file/d/1FAH7ZG5wYIPuXE2Ry6qwmYnGazdOQeFk/view?usp=drive_link/view?usp=drive_link" target="_blank">[공지] 출장 여비 규정 개정 - 해외장기파견수당 관련사항</a></li>
-<li><a href="https://drive.google.com/file/d/1D7c4s8XLo4adK6ck5BCRi7HKSUkI7jr9/view?usp=drive_link" target="_blank">[공지] 사내 동아리 운영안</a></li>
-<li><a href="https://drive.google.com/file/d/1zXM6F555ZnMoRrxRfdBByLodeVEC34mN/view?usp=drive_link" target="_blank">[공지] 수습직원 평가자 가이드북</a></li>
-    <li><a href="https://docs.google.com/document/d/1b1VKfgB6bEH1sRMrTArVTHmP5l4H5ZRh/edit?usp=drive_link&ouid=111554432483797816598&rtpof=true&sd=true" target="_blank">[공지] 수습직원 평가양식</a></li>
-</ul>
-</div>
-<div class="card">
-<div class="emoji">💰</div>
-<div class="title">예산·정산</div>
-<div class="desc">법인카드, 해외송금, 경비처리 등</div>
-<ul>
-<li><a href="https://drive.google.com/file/d/1K6mIhbMwKlikDwHWudwAJ9Gbcj_-Kvpt/view?usp=drive_link" target="_blank">[지침] 예산 관리 방안</a></li>
-    <li><a href="https://drive.google.com/file/d/1qhqqqrBg6NwuYF5Mb2UO0XGOlcaU788y/view?usp=drive_link" target="_blank">[지침] 해외송금 업무관리 지침</a></li>
-<li><a href="https://drive.google.com/file/d/1kmoK0IZ4jQoVwiatlxtRXWmQsnWT-d-F/view?usp=drive_link" target="_blank">[매뉴얼] 법인카드 사용 가이드</a></li>
-<li><a href="https://drive.google.com/file/d/1fCHwOgJ6zCqpmlqa3pvzyhZzqQjGpubz/view?usp=drive_link/view?usp=drive_link" target="_blank">[공지] 위임전결 시 지출결의 작성방법</a></li>
-</ul>
-</div>
-<div class="card">
-<div class="emoji">📁</div>
-<div class="title">사업관리</div>
-<div class="desc">용역계약 및 투찰, 파트너십, Clean ODA, 종료보고, 대외활동 등</div>
-<ul>
-<li><a href="https://drive.google.com/file/d/1K49loLydgIW6WOp6IejyYqooiyrc-QhC/view?usp=drive_link/view?usp=drive_link" target="_blank">[규정] 대외활동 규정</a></li>
-<li><a href="https://drive.google.com/file/d/1xSBBMULSC8jZn3Xa0l2Ls2jW6JJS-XNI/view?usp=drive_link" target="_blank">[지침] 사업 종료보고 지침</a></li>
-<li><a href="https://drive.google.com/file/d/1QRwWnEQFEajtVTZ-1vCBZxHsVOnuBkzE/view?usp=drive_link" target="_blank">[지침] 용역계약 투찰 운영지침</a></li>
-<li><a href="https://drive.google.com/file/d/1toy6Lhad8LWC2aCdP1yBcnkJYOxKcVjV/view?usp=drive_link/view?usp=drive_link" target="_blank">[지침] 용역비 원천징수 기준</a></li>
-<li><a href="https://drive.google.com/file/d/1kOGVb7ylLn332BpqM4OGlk3lfAZFJXeU/view?usp=drive_link/view?usp=drive_link" target="_blank">[지침] 정보보안 지침</a></li>
-<li><a href="https://drive.google.com/file/d/1STmOPPPHp6ODm0nXO0qGPQjRtbHw_jUz/view?usp=drive_link" target="_blank">[지침] 파트너십사업 운영 지침</a></li>
-<li><a href="https://drive.google.com/file/d/18N2jlDKjsQQBEiy-UDPyL8FTyVxNFfqO/view?usp=drive_link" target="_blank">[지침] Clean ODA 실천기준</a></li>
-<li><a href="https://drive.google.com/file/d/1j-mKEiNfq0gmFaC581IS_HbwlZuKDGh7/view?usp=drive_link" target="_blank">[매뉴얼] 양성평등 및 상호존중을 위한 Clean&amp;Zero 캠페인</a></li>
-<li><a href="https://drive.google.com/file/d/1yHNBcxwPtFqROz6C1VwLm_Xqe-pSL0Bz/view?usp=drive_link/view?usp=drive_link" target="_blank">[공지] 해외 출장 중 도난·분실 사고 주의 </a></li>
-<li><a href="https://drive.google.com/file/d/1x1bHZNTOZZ4OdujgGnHpD-CV-7T_nBds/view?usp=drive_link/view?usp=drive_link" target="_blank">[공지] KOICA 국별협력사업 예비비 활용 세부지침 </a></li>
-<li><a href="https://drive.google.com/file/d/1RTZdIePx3O0SX4AxZpWcKBx5vHBDajWo/view?usp=drive_link/view?usp=drive_link" target="_blank">[공지] PAO 채용 및 운용 원칙</a></li>
-<li><a href="https://drive.google.com/file/d/1-KNjoZ2jTQoLR1Bu9B7YDv1xrX-lu7S4/view?usp=drive_link" target="_blank">[공지] 수주 인센티브 운영안 </a></li>    
-</ul>
-</div>
-<div class="card">
-<div class="emoji">💻</div>
-<div class="title">조직·사내 시스템</div>
-<div class="desc">위임전결, 회의체, 지정좌석, 회의실, 프린터 설정, 공용노트북, 주차안내 등</div>
-<ul>
-<li><a href="https://docs.google.com/spreadsheets/d/16QMdYTlnY2MFfizt7EcjVkGghLuWZiPflUE_Z0-fIoM/edit?usp=sharing" target="_blank">[규정] 전자결재라인</a></li>
-<li><a href="https://drive.google.com/file/d/1T0iGllM3C94ChG9j5JDOsc9bDSrzljRp/view?usp=drive_link" target="_blank">[규정] 노사협의회 규정</a></li>
-<li><a href="https://drive.google.com/file/d/1Gz266aVoT0jm5q9yAn17VCYCkKlG4DCV/view?usp=drive_link" target="_blank">[지침] ★업무지침(온보딩 교재) </a></li>
-<li><a href="https://drive.google.com/file/d/1HCA0dOgi1AVPYCbISrtn4Mb1ox6_0BfJ/view?usp=drive_link" target="_blank">[지침] ★사업지침(온보딩 교재) </a></li>
-<li><a href="https://drive.google.com/file/d/13o6wwYaS1FLJC92PH5BriQc2XDJNcgt7/view?usp=drive_link" target="_blank">[지침] 개인노트북 사용지침</a></li>
-<li><a href="https://drive.google.com/file/d/1U_6773Uac4m9cTQNEUd9tGeMhDH2iPDv/view?usp=drive_link" target="_blank">[매뉴얼] 프린터 설정 매뉴얼</a></li>
-<li><a href="https://drive.google.com/file/d/1M9Dp5xw8Y4teFE9wK9snjELipErxKNrk/view?usp=drive_link" target="_blank">[매뉴얼] 비대면 화상회의 매뉴얼</a></li>
-<li><a href="https://drive.google.com/file/d/1yu9HpVK_z20nLaBKUHLwRIUwJeyLTzAL/view?usp=drive_link" target="_blank">[매뉴얼] 회의실 이용 안내</a></li>
-<li><a href="https://drive.google.com/file/d/1Ph7cYB6EeykOQZq1cloak6L2_disNvfw/view?usp=drive_link" target="_blank">[공지] 외부인사 위즈빌딩 주차 안내</a></li>
-<li><a href="https://drive.google.com/file/d/17wnhgoJYMTUjzRjU9gz3R7te6ZLGqatL/view?usp=drive_link" target="_blank">[공지] 지정번호 좌석 예약제 시행</a></li>
-<li><a href="https://drive.google.com/file/d/1qEsudCfiBFk1iQYSaCCajLr-BkJ36gmT/view?usp=drive_link/view?usp=drive_link" target="_blank">[참고] 한국개발전략연구소 정관</a></li>
-</ul>
-</div>
-</div>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  const input = document.getElementById("searchInput");
-  const items = document.querySelectorAll(".card ul li");
 
-  input.addEventListener("input", function() {
-    const value = this.value.toLowerCase();
-    items.forEach(function(item) {
-      const text = item.textContent.toLowerCase();
-      const keywords = (item.getAttribute("data-keywords") || "").toLowerCase();
-      item.style.display = (text.includes(value) || keywords.includes(value)) ? "" : "none";
-    });
-  });
-});
+<header class="nav"><div class="wrap">
+  <a class="logo" href="#top"><span class="lg"><img id="logo" alt="KDS"></span><span class="lt" style="white-space:nowrap">Rulebook <em>Go!</em></span></a>
+  <div class="tools">
+    <button type="button" class="theme-btn" id="howBtn"><span aria-hidden="true">?</span><span class="lbl">사용법</span></button>
+    <a class="theme-btn" id="folderBtn" target="_blank" rel="noopener" style="text-decoration:none"><span aria-hidden="true">📂</span><span class="lbl">전체 규정 폴더</span><span class="ar" aria-hidden="true" style="opacity:.6">↗</span></a>
+    <button type="button" class="theme-btn" id="themeToggle" aria-pressed="false" aria-label="다크/일반 모드 전환"><span aria-hidden="true" id="themeIco">☾</span><span class="lbl" id="themeLbl">다크 모드</span></button>
+    <div class="fontctrl" role="group" aria-label="글자 크기">
+      <button type="button" data-z=".93" aria-pressed="false" aria-label="글자 작게" style="font-size:11px">가</button>
+      <button type="button" data-z="1" aria-pressed="true" aria-label="글자 보통" style="font-size:13px">가</button>
+      <button type="button" data-z="1.12" aria-pressed="false" aria-label="글자 크게" style="font-size:15px">가</button>
+    </div>
+  </div>
+</div></header>
+
+<nav class="side-dots" aria-label="섹션 이동">
+  <a href="#top" data-sec="top"><span>처음</span><i></i></a>
+  <a href="#situations" data-sec="situations"><span>상황으로 찾기</span><i></i></a>
+  <a href="#fields" data-sec="fields"><span>분야별 모아보기</span><i></i></a>
+</nav>
+
+<div class="zoom">
+<section class="hero" id="top"><div class="wrap">
+  <div class="brandbar" aria-hidden="true"><i style="background:var(--kds-blue)"></i><i style="background:var(--kds-lblue)"></i><i style="background:var(--kds-orange)"></i><i style="background:var(--kds-green)"></i></div>
+  <h1>KDS <strong>Rulebook Go!</strong></h1>
+  <p class="lead">규정 이름을 몰라도 괜찮아요. 떠오르는 단어나 지금 하려는 일로 찾아보세요.</p>
+  <form class="sbox" id="sform" role="search">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+    <input id="q" type="text" enterkeyhint="search" autocomplete="off" placeholder="예: 경조사, 출장비, 법인카드, 재택근무" aria-label="규정 검색">
+    <button type="button" class="x" id="qx" aria-label="검색어 지우기" hidden>✕</button>
+    <button type="submit" class="go">찾기</button>
+  </form>
+  <div class="chips" id="hot"></div>
+</div></section>
+
+<main class="wrap">
+  <section class="blk" id="resBlk" hidden aria-live="polite"></section>
+
+  <div id="home">
+    <section class="blk" id="situations">
+      <div class="sh"><div class="row"><h2>상황으로 찾기</h2></div></div>
+      <div class="sit" id="sit"></div>
+      <div id="sitp"></div>
+    </section>
+
+    <section class="blk" id="fields">
+      <div class="sh"><div class="row"><h2>분야별 모아보기</h2></div></div>
+      <div class="cats" id="cats"></div>
+    </section>
+
+
+  </div>
+
+  <footer class="fline">KDS Rulebook Go! · Updated 2026.10.22</footer>
+</main>
+</div>
+
+<dialog id="how" aria-labelledby="howT"><div class="modal-inner">
+  <div class="modal-head"><div><p class="kicker">How to use</p><h2 id="howT">Rulebook Go! 사용법</h2></div><button type="button" class="close" id="howX" aria-label="닫기">✕</button></div>
+  <p class="intro">업무 중 어떤 규정을 봐야 할지 헷갈릴 때, 규정 찾느라 헤매지 않도록 만든 사규 바로가기입니다.</p>
+  <div class="info-block"><h3>주요 기능</h3><ul>
+    <li><b>상황으로 찾기</b> — 출장, 휴가, 비용 처리처럼 하려는 일을 고르면 봐야 할 규정을 순서대로 모아 보여드려요.</li>
+    <li><b>분야별 모아보기</b> — 기본 규범, 조직·대외활동, 인사·복무, 예산·회계, 사업, 자산·IT·사무로 나눠 정리했어요.</li>
+    <li><b>키워드 검색</b> — 규정 이름이 생각나지 않아도 떠오르는 단어로 찾을 수 있어요. "휴가"를 넣으면 "연차"가 들어 있는 규정도 함께 나와요.</li>
+  </ul></div>
+  <div class="info-block"><h3>사용 방법</h3><ol>
+    <li>상단 검색창에 키워드를 입력합니다. (예: 출장, 휴가, 정보보안)</li>
+    <li>관련된 규정이 관련 높은 순으로 나옵니다. 왜 나왔는지도 함께 표시돼요.</li>
+    <li>규정 이름을 누르면 원문이 새 창으로 열립니다. <span class="kbd">/</span> 키로 언제든 검색창으로 이동할 수 있어요.</li>
+  </ol></div>
+  <div class="info-block"><h3>문서 구분</h3><div class="legend" style="margin:0"><span><i class="tag r">규정</i>기본 원칙</span><span><i class="tag s">지침</i>세부 기준</span><span><i class="tag g">매뉴얼</i>실무 절차·서식</span><span><i class="tag n">공지</i>안내·참고</span></div></div>
+  <div class="info-block" style="padding-bottom:0"><h3>문의</h3><ul><li>규정은 계속 업데이트됩니다. 개선 아이디어가 있다면 경영기획본부로 알려 주세요.</li></ul></div>
+</div></dialog>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(function(){
+document.getElementById('logo').src='data:image/png;base64,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';
+const $=id=>document.getElementById(id);
+const esc=s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const LINKS={"📂 전체 규정 폴더 바로가기": "https://drive.google.com/drive/folders/1rMe8bIJq6dr8Eo-Uw4ii9Ot1ce6tH75v?usp=drive_link", "취업규칙": "https://drive.google.com/file/d/12TvU10buMb1WycHByWfqksjC9xry4-dY/view?usp=drive_link", "인사규정": "https://drive.google.com/file/d/1Z3jCGc-Z5fFj52Q7lghCULFUtI21tYI1/view?usp=drive_link", "경조휴가 및 경조금 규정": "https://drive.google.com/file/d/15e-wW_v90Klj4NkjBXQPnoCunSO_7q9i/view?usp=drive_link", "대체휴가 규정": "https://drive.google.com/file/d/1Fe5NkPsdBGPqJmpiVY3_6zS5cW8f6WBy/view?usp=drive_link", "성희롱·성폭력 예방 규정": "https://drive.google.com/file/d/1eJip-8E7jvxAVBK1_nPYLfYgTCBClJki/view?usp=drive_link", "안전관리 규정": "https://drive.google.com/file/d/1YtH3z_-BlKEp-dOOBHGyQQpZ9fw3gyZO/view?usp=drive_link", "출장여비 규정": "https://drive.google.com/file/d/1KCl7Azm2u3T3VSJ7I6JOOQwupZ3nPs7E/view?usp=drive_link", "해외 장기파견인력 복무규정": "https://drive.google.com/file/d/1naXu51Hmj4ltAWDPV4GIJE5c-MwlGe31/view?usp=drive_link", "복리후생비 규정지침 모음": "https://drive.google.com/file/d/1M3vI8KlkNOX92z4U9GsZlNsOsH3bdpzI/view?usp=drive_link", "근무수칙": "https://drive.google.com/file/d/1zOUfNNsV7j5DeiCmD8VUjAB7npUjyAHm/view?usp=drive_link", "온보딩 프로그램": "https://drive.google.com/file/d/1M_pjwzYg6Ox9dGqQ5Y_nLlvN2UIovMWV/view?usp=drive_link", "장기근속포상제도 운영지침": "https://drive.google.com/file/d/1-uyFW7rysCdaTHT6xvaaY3z6FfbTeRYB/view?usp=drive_link", "재택근무제 매뉴얼": "https://drive.google.com/file/d/1GeCNEC-VPfJO0azPyL1Qagknpi0jWYyk/view?usp=drive_link", "Flex Day(시차출퇴근제) 운영매뉴얼": "https://drive.google.com/file/d/1sQ1MJTWdyV7p4kDsZrRnAtrfm3v0yMZ3/view?usp=drive_link", "출장업무 매뉴얼": "https://drive.google.com/file/d/1hUTCMdeG6nLpgZ0QvjxsAqmY77pYuYlX/view?usp=drive_link", "출장 여비 규정 개정 - 해외장기파견수당 관련사항": "https://drive.google.com/file/d/1FAH7ZG5wYIPuXE2Ry6qwmYnGazdOQeFk/view?usp=drive_link", "사내 동아리 운영안": "https://drive.google.com/file/d/1D7c4s8XLo4adK6ck5BCRi7HKSUkI7jr9/view?usp=drive_link", "수습직원 평가자 가이드북": "https://drive.google.com/file/d/1zXM6F555ZnMoRrxRfdBByLodeVEC34mN/view?usp=drive_link", "수습직원 평가양식": "https://docs.google.com/document/d/1b1VKfgB6bEH1sRMrTArVTHmP5l4H5ZRh/edit?usp=drive_link&ouid=111554432483797816598&rtpof=true&sd=true", "예산 관리 방안": "https://drive.google.com/file/d/1K6mIhbMwKlikDwHWudwAJ9Gbcj_-Kvpt/view?usp=drive_link", "해외송금 업무관리 지침": "https://drive.google.com/file/d/1qhqqqrBg6NwuYF5Mb2UO0XGOlcaU788y/view?usp=drive_link", "법인카드 사용 가이드": "https://drive.google.com/file/d/1kmoK0IZ4jQoVwiatlxtRXWmQsnWT-d-F/view?usp=drive_link", "위임전결 시 지출결의 작성방법": "https://drive.google.com/file/d/1fCHwOgJ6zCqpmlqa3pvzyhZzqQjGpubz/view?usp=drive_link", "대외활동 규정": "https://drive.google.com/file/d/1K49loLydgIW6WOp6IejyYqooiyrc-QhC/view?usp=drive_link", "사업 종료보고 지침": "https://drive.google.com/file/d/1xSBBMULSC8jZn3Xa0l2Ls2jW6JJS-XNI/view?usp=drive_link", "용역계약 투찰 운영지침": "https://drive.google.com/file/d/1QRwWnEQFEajtVTZ-1vCBZxHsVOnuBkzE/view?usp=drive_link", "용역비 원천징수 기준": "https://drive.google.com/file/d/1toy6Lhad8LWC2aCdP1yBcnkJYOxKcVjV/view?usp=drive_link", "정보보안 지침": "https://drive.google.com/file/d/1kOGVb7ylLn332BpqM4OGlk3lfAZFJXeU/view?usp=drive_link", "파트너십사업 운영 지침": "https://drive.google.com/file/d/1STmOPPPHp6ODm0nXO0qGPQjRtbHw_jUz/view?usp=drive_link", "Clean ODA 실천기준": "https://drive.google.com/file/d/18N2jlDKjsQQBEiy-UDPyL8FTyVxNFfqO/view?usp=drive_link", "양성평등 및 상호존중을 위한 Clean&Zero 캠페인": "https://drive.google.com/file/d/1j-mKEiNfq0gmFaC581IS_HbwlZuKDGh7/view?usp=drive_link", "해외 출장 중 도난·분실 사고 주의": "https://drive.google.com/file/d/1yHNBcxwPtFqROz6C1VwLm_Xqe-pSL0Bz/view?usp=drive_link", "KOICA 국별협력사업 예비비 활용 세부지침": "https://drive.google.com/file/d/1x1bHZNTOZZ4OdujgGnHpD-CV-7T_nBds/view?usp=drive_link", "PAO 채용 및 운용 원칙": "https://drive.google.com/file/d/1RTZdIePx3O0SX4AxZpWcKBx5vHBDajWo/view?usp=drive_link", "수주 인센티브 운영안": "https://drive.google.com/file/d/1-KNjoZ2jTQoLR1Bu9B7YDv1xrX-lu7S4/view?usp=drive_link", "전자결재라인": "https://docs.google.com/spreadsheets/d/16QMdYTlnY2MFfizt7EcjVkGghLuWZiPflUE_Z0-fIoM/edit?usp=sharing", "노사협의회 규정": "https://drive.google.com/file/d/1T0iGllM3C94ChG9j5JDOsc9bDSrzljRp/view?usp=drive_link", "★업무지침(온보딩 교재)": "https://drive.google.com/file/d/1Gz266aVoT0jm5q9yAn17VCYCkKlG4DCV/view?usp=drive_link", "★사업지침(온보딩 교재)": "https://drive.google.com/file/d/1HCA0dOgi1AVPYCbISrtn4Mb1ox6_0BfJ/view?usp=drive_link", "개인노트북 사용지침": "https://drive.google.com/file/d/13o6wwYaS1FLJC92PH5BriQc2XDJNcgt7/view?usp=drive_link", "프린터 설정 매뉴얼": "https://drive.google.com/file/d/1U_6773Uac4m9cTQNEUd9tGeMhDH2iPDv/view?usp=drive_link", "비대면 화상회의 매뉴얼": "https://drive.google.com/file/d/1M9Dp5xw8Y4teFE9wK9snjELipErxKNrk/view?usp=drive_link", "회의실 이용 안내": "https://drive.google.com/file/d/1yu9HpVK_z20nLaBKUHLwRIUwJeyLTzAL/view?usp=drive_link", "외부인사 위즈빌딩 주차 안내": "https://drive.google.com/file/d/1Ph7cYB6EeykOQZq1cloak6L2_disNvfw/view?usp=drive_link", "지정번호 좌석 예약제 시행": "https://drive.google.com/file/d/17wnhgoJYMTUjzRjU9gz3R7te6ZLGqatL/view?usp=drive_link", "한국개발전략연구소 정관": "https://drive.google.com/file/d/1qEsudCfiBFk1iQYSaCCajLr-BkJ36gmT/view?usp=drive_link"};
+const DOCS=[
+ {id:'work',t:'r',n:'취업규칙',c:'100',k:'채용 임용 수습기간 제출서류 복무 성희롱 품위유지 사원증 비상출근 결근 지각 조퇴 외출 출장업무 공민권 근로조건 근로시간 시차출퇴근제 재택근무 휴게시간 연장근무 야간 휴일근로 육아시간 주휴일 정휴일 휴일대체 연차유급휴가 연차휴가 생리휴가 임산부 태아검진 배우자 출산휴가 난임치료휴가 병가 공가 경조휴가 대체휴가 특별휴가 육아휴직 육아기 근로시간 단축 가족돌봄 복직 임금 연봉계약 임금산정 상여금 퇴직금 정년 해고 표창 징계 안전수칙 건강진단 건강검진 직장내괴롭힘 재해보상'},
+ {id:'labor',t:'r',n:'노사협의회 규정',c:'100',k:'노사협의회 근로자위원 고충처리 협의'},
+ {id:'aoi',t:'n',n:'한국개발전략연구소 정관',c:'100',tl:'참고',k:'정관 이사회 총회 목적 사업'},
+ {id:'esign',t:'r',n:'전자결재라인',c:'200',k:'결재 위임전결 전결 결재권자 결재선'},
+ {id:'ext',t:'r',n:'대외활동 규정',c:'200',k:'외부강의 자문 기고 겸직 강연 사례금 외부활동 신고'},
+ {id:'hr',t:'r',n:'인사규정',c:'300',k:'인사위원회 근무평가 승진 교육훈련 임용 자격기준 평가'},
+ {id:'cond',t:'r',n:'경조휴가 및 경조금 규정',c:'300',k:'경조사 결혼 출산 사망 조의 축의 경조금 화환'},
+ {id:'subst',t:'r',n:'대체휴가 규정',c:'300',k:'대체휴가 휴일근무 주말근무 보상휴가'},
+ {id:'harass',t:'r',n:'성희롱·성폭력 예방 규정',c:'300',k:'성희롱 성폭력 신고 상담 고충 예방교육'},
+ {id:'safe',t:'r',n:'안전관리 규정',c:'300',k:'안전 사고 재해 비상 대피 해외안전'},
+ {id:'travel',t:'r',n:'출장여비 규정',c:'300',k:'출장비 여비 일비 숙박비 식비 항공 교통비 국외출장 국내출장'},
+ {id:'abroad',t:'r',n:'해외 장기파견인력 복무규정',c:'300',k:'장기파견 해외파견 파견수당 현지 체류'},
+ {id:'welfare',t:'s',n:'복리후생비 규정지침 모음',c:'300',k:'조직활성화비 선택적복리후생 복지포인트 자격증취득 사내동아리 사내추천 장기근속 경조'},
+ {id:'rules',t:'s',n:'근무수칙',c:'300',k:'출근 퇴근 근태 복장 사무실 예절'},
+ {id:'onb',t:'s',n:'온보딩 프로그램',c:'300',k:'신규입사 입사 신입 적응 교육'},
+ {id:'long',t:'s',n:'장기근속포상제도 운영지침',c:'300',k:'장기근속 포상 근속 휴가'},
+ {id:'remote',t:'g',n:'재택근무제 매뉴얼',c:'300',k:'재택 원격근무 집에서 근무'},
+ {id:'flex',t:'g',n:'Flex Day(시차출퇴근제) 운영매뉴얼',c:'300',k:'시차출퇴근 유연근무 출근시간 퇴근시간 Flex'},
+ {id:'tripm',t:'g',n:'출장업무 매뉴얼',c:'300',k:'출장 신청 정산 항공권 보고서 출장비'},
+ {id:'probg',t:'n',n:'수습직원 평가자 가이드북',c:'300',k:'수습 평가 신입 평가자'},
+ {id:'probf',t:'n',n:'수습직원 평가양식',c:'300',k:'수습 평가 양식 서식'},
+ {id:'clean',t:'s',n:'Clean ODA 실천기준',c:'500',k:'청렴 윤리 이해충돌 금품 향응 선물 부패'},
+ {id:'cz',t:'g',n:'양성평등 및 상호존중을 위한 Clean&Zero 캠페인',c:'500',k:'양성평등 상호존중 갑질 괴롭힘 존중'},
+ {id:'bud',t:'s',n:'예산 관리 방안',c:'400',k:'예산 편성 전용 증액 집행 예산과목'},
+ {id:'remit',t:'s',n:'해외송금 업무관리 지침',c:'400',k:'해외송금 외화 송금 환율 현지'},
+ {id:'card',t:'g',n:'법인카드 사용 가이드',c:'400',k:'법인카드 카드 영수증 증빙 식대 회의비 접대비 경비'},
+ {id:'expend',t:'n',n:'위임전결 시 지출결의 작성방법',c:'400',k:'지출결의 결의서 전결 ERP 경비처리 증빙'},
+ {id:'wht',t:'s',n:'용역비 원천징수 기준',c:'400',k:'원천징수 사업소득 기타소득 용역비 세금 3.3%'},
+ {id:'close',t:'s',n:'사업 종료보고 지침',c:'500',k:'종료보고 사업종료 결과보고 정산'},
+ {id:'bid',t:'s',n:'용역계약 투찰 운영지침',c:'500',k:'투찰 입찰 제안 용역계약 가격 조달'},
+ {id:'part',t:'s',n:'파트너십사업 운영 지침',c:'500',k:'파트너십 협력사업 공동사업'},
+ {id:'bizg',t:'s',n:'★사업지침(온보딩 교재)',c:'200',k:'사업 수행 절차 온보딩 PM'},
+ {id:'koica',t:'n',n:'KOICA 국별협력사업 예비비 활용 세부지침',c:'500',k:'KOICA 예비비 국별협력'},
+ {id:'pao',t:'n',n:'PAO 채용 및 운용 원칙',c:'500',k:'PAO 현지인력 채용 현지사무소'},
+ {id:'inc',t:'n',n:'수주 인센티브 운영안',c:'500',k:'수주 인센티브 성과급 포상'},
+ {id:'sec',t:'s',n:'정보보안 지침',c:'600',k:'보안 정보보안 비밀번호 USB 외부반출 자료유출 개인정보 클라우드'},
+ {id:'note',t:'s',n:'개인노트북 사용지침',c:'600',k:'노트북 PC 컴퓨터 개인기기 공용노트북'},
+ {id:'workg',t:'s',n:'★업무지침(온보딩 교재)',c:'200',k:'업무 절차 회계 인사 총무 증명서 온보딩'},
+ {id:'print',t:'g',n:'프린터 설정 매뉴얼',c:'600',k:'프린터 인쇄 복합기 스캔'},
+ {id:'video',t:'g',n:'비대면 화상회의 매뉴얼',c:'600',k:'화상회의 줌 Zoom 구글밋 비대면 회의'},
+ {id:'room',t:'g',n:'회의실 이용 안내',c:'600',k:'회의실 예약 회의실 이용'},
+ {id:'park',t:'n',n:'외부인사 위즈빌딩 주차 안내',c:'600',k:'주차 방문객 외부인사 위즈빌딩'},
+ {id:'seat',t:'n',n:'지정번호 좌석 예약제 시행',c:'600',k:'좌석 자리 예약 지정좌석'},
+ {id:'theft',t:'n',n:'해외 출장 중 도난·분실 사고 주의',c:'500',k:'도난 분실 해외출장 여권 사고'},
+ {id:'club',t:'n',n:'사내 동아리 운영안',c:'300',k:'동아리 사내동아리 지원금'},
+ {id:'tripnote',t:'n',n:'출장 여비 규정 개정 - 해외장기파견수당 관련사항',c:'300',k:'파견수당 출장여비 개정 해외장기파견'}
+];
+const SITS=[
+ {em:'✈️',n:'출장 가요',d:'여비, 출장 절차, 해외 안전',items:[['travel','여비·일비·숙박비 기준'],['tripm','신청부터 정산까지 절차'],['theft','해외에서 도난·분실 시'],['abroad','장기 파견일 때'],['tripnote','해외장기파견수당 개정 내용']]},
+ {em:'🌴',n:'휴가·근무시간',d:'연차, 경조휴가, 재택, 유연근무',items:[['work','연차·특별휴가·육아휴직 등 (취업규칙 휴가 조항)'],['subst','휴일에 일했다면 대체휴가'],['cond','경조사 휴가 일수'],['flex','출퇴근 시간 조정'],['remote','재택근무 신청·운영']]},
+ {em:'💳',n:'비용을 썼어요',d:'법인카드, 지출결의, 송금',items:[['card','카드 사용 범위와 증빙'],['expend','지출결의서 작성과 전결'],['bud','예산 전용·집행 기준'],['remit','해외로 돈을 보낼 때'],['wht','외부 전문가 용역비 세금']]},
+ {em:'👋',n:'새로 입사했어요',d:'온보딩, 근무 기본 규칙',items:[['onb','입사 첫 달 프로그램'],['workg','회계·인사·총무 업무 기초 (온보딩 교재)'],['bizg','사업 수행 기초 (온보딩 교재)'],['rules','출퇴근·근무 예절'],['work','근로조건 전반']]},
+ {em:'🎤',n:'외부 강의·자문 요청',d:'대외활동 신고, 사례금, 청렴',items:[['ext','신고·승인 절차와 사례금 기준'],['clean','금품·향응, 이해충돌 기준']]},
+ {em:'🔐',n:'자료를 밖으로 보내요',d:'보안, 개인정보, 노트북',items:[['sec','외부 반출·공유 전 확인할 것'],['note','개인 노트북으로 일할 때']]},
+ {em:'📑',n:'사업 수주·계약',d:'투찰, 인센티브, 현지 인력',items:[['bid','투찰 가격·제안 절차'],['inc','수주 인센티브'],['pao','현지 인력(PAO) 채용'],['wht','용역비 원천징수']]},
+ {em:'🎁',n:'복지·경조사',d:'복지비, 경조금, 장기근속, 동아리',items:[['welfare','복지비·자격증·사내추천'],['cond','경조금 지급 기준'],['long','장기근속 포상'],['club','사내 동아리 지원']]}
+];
+const HOT=['출장비','연차','경조사','법인카드','재택','보안','회의실','주차'];
+const SYN={'휴가':['연차','휴가','휴일'],'연차':['연차','휴가'],'출장비':['여비','출장','일비'],'여비':['여비','출장'],'경조사':['경조','결혼','조의','축의'],'경조':['경조'],'pc':['노트북','컴퓨터','pc'],'컴퓨터':['노트북','pc'],'카드':['법인카드','카드'],'돈':['예산','지출','송금','경비'],'세금':['원천징수','세금'],'괴롭힘':['괴롭힘','갑질','성희롱'],'입사':['신규입사','온보딩','수습','입사'],'신입':['온보딩','수습','신입'],'줌':['화상회의','zoom'],'주차':['주차']};
+
+const CATS=[
+ {no:'100',em:'🏛️',n:'기본 규범',d:'정관, 취업규칙, 노사협의회',band:'var(--kds-blue)'},
+ {no:'200',em:'🤝',n:'조직·대외활동',d:'결재라인, 대외활동, 온보딩 교재',band:'var(--kds-lblue)'},
+ {no:'300',em:'🙋',n:'인사·복무',d:'휴가, 출장, 복지, 평가, 동아리',band:'var(--kds-orange)'},
+ {no:'400',em:'💰',n:'예산·회계',d:'법인카드, 지출결의, 송금, 원천징수',band:'var(--kds-green)'},
+ {no:'500',em:'📁',n:'사업',d:'투찰, 수행, 종료보고, 사업 인력, 청렴',band:'var(--kds-gold)'},
+ {no:'600',em:'💻',n:'자산·IT·사무',d:'정보보안, 노트북, 프린터, 회의실, 주차·좌석',band:'var(--kds-silver)'}
+];
+const TL={r:'규정',s:'지침',g:'매뉴얼',n:'공지'};
+const BY={};DOCS.forEach(d=>{BY[d.id]=d;d.url=LINKS[d.n]||'';});
+const state={sit:null,more:new Set()};
+
+function toast(m){const t=$('toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove('on'),2600);}
+function tag(d){return '<i class="tag '+d.t+'">'+(d.tl||TL[d.t])+'</i>';}
+function hl(s,terms){let h=esc(s);terms.forEach(t=>{if(!t)return;h=h.replace(new RegExp('('+t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi'),'<mark>$1</mark>');});return h;}
+function itemHtml(d,o){o=o||{};
+  const inner=tag(d)+'<span class="bd"><span class="nm">'+(o.hl?hl(d.n,o.hl):esc(d.n))+'</span>'+(o.alsoOf?'<span class="also">'+o.alsoOf+' 분야</span>':'')+(o.why?'<span class="why">'+o.why+'</span>':'')+'</span>';
+  return '<li>'+(d.url?'<a class="item" href="'+esc(d.url)+'" target="_blank" rel="noopener">'+inner+'<span class="go" aria-hidden="true">↗</span></a>':'<span class="item">'+inner+'</span>')+'</li>';}
+
+/* 01 상황 */
+function renderSit(){
+  $('sit').innerHTML=SITS.map((s,i)=>'<button type="button" class="st" data-s="'+i+'" aria-expanded="'+(state.sit===i)+'" aria-controls="sitp"><span class="em" aria-hidden="true">'+s.em+'</span><span><b>'+esc(s.n)+'</b><small>'+esc(s.d)+'</small></span></button>').join('');
+  if(state.sit===null){$('sitp').innerHTML='';return;}
+  const s=SITS[state.sit];
+  $('sitp').innerHTML='<div class="sitp" id="sitpIn"><div class="hd"><span style="font-size:22px" aria-hidden="true">'+s.em+'</span><b>'+esc(s.n)+'</b><span class="tip">이 순서로 보면 편해요</span><button type="button" class="close" id="sitC" aria-label="닫기">✕</button></div><ol>'+
+    s.items.map(([id,why])=>itemHtml(BY[id],{why:esc(why)})).join('')+'</ol></div>';}
+$('sit').addEventListener('click',e=>{const b=e.target.closest('[data-s]');if(!b)return;const i=+b.dataset.s;state.sit=state.sit===i?null:i;renderSit();if(state.sit!==null)$('sitpIn').scrollIntoView({behavior:'smooth',block:'nearest'});});
+$('sitp').addEventListener('click',e=>{if(e.target.closest('#sitC')){state.sit=null;renderSit();}});
+
+/* 02 분야 */
+const LIMIT=6;
+function renderCats(){
+  $('cats').innerHTML=CATS.map(c=>{
+    const RANK={r:0,s:1,g:2,n:3};
+    const all=DOCS.filter(d=>d.c===c.no).map((d,i)=>({d,i})).sort((a,b)=>RANK[a.d.t]-RANK[b.d.t]||a.i-b.i);
+    const open=state.more.has(c.no);const shown=open?all:all.slice(0,LIMIT);
+    return '<div class="cat" style="--band:'+c.band+'"><div class="ch"><span class="em" aria-hidden="true">'+c.em+'</span><span><b>'+esc(c.n)+'</b><small>'+esc(c.d)+'</small></span><span class="no">'+all.length+'건</span></div><ul>'+
+      shown.map(x=>itemHtml(x.d,{alsoOf:x.alsoOf})).join('')+'</ul>'+
+      (all.length>LIMIT?'<button type="button" class="more" data-more="'+c.no+'">'+(open?'접기 ▲':'더 보기 ('+(all.length-LIMIT)+'건) ▼')+'</button>':'')+'</div>';}).join('');}
+$('cats').addEventListener('click',e=>{const m=e.target.closest('[data-more]');if(!m)return;const no=m.dataset.more;state.more.has(no)?state.more.delete(no):state.more.add(no);renderCats();});
+
+/* 03 · 04 */
+function renderStrips(){
+  $('folderBtn').href=LINKS['📂 전체 규정 폴더 바로가기']||'#';}
+
+/* 검색 */
+function terms(q){const base=q.toLowerCase().split(/\s+/).filter(Boolean);const out=new Set(base);base.forEach(w=>{Object.keys(SYN).forEach(k=>{if(w===k||w.includes(k))SYN[k].forEach(x=>out.add(x.toLowerCase()));});});return [...out];}
+function search(q){
+  const blk=$('resBlk');q=q.trim();$('qx').hidden=!q;
+  if(!q){blk.hidden=true;$('home').hidden=false;return;}
+  const ts=terms(q);const res=[];
+  DOCS.forEach(d=>{const nm=d.n.toLowerCase();const kw=(d.k||'').toLowerCase().split(/\s+/);let score=0;const why=new Set();
+    ts.forEach(t=>{if(nm.includes(t))score+=10;else{const hit=kw.filter(k=>k.includes(t));if(hit.length){score+=3;hit.slice(0,2).forEach(h=>why.add(h));}}});
+    if(score)res.push({d,score,why:[...why]});});
+  res.sort((a,b)=>b.score-a.score||a.d.n.localeCompare(b.d.n,'ko'));
+  $('home').hidden=true;blk.hidden=false;
+  const head='<div class="sh"><p class="kicker">Search</p></div>';
+  if(!res.length){blk.innerHTML=head+'<div class="res"><div class="none"><b>"'+esc(q)+'"</b>(으)로 찾은 규정이 없어요.<br>다른 말로 찾아보거나 아래 단어를 눌러 보세요.<div class="chips">'+HOT.map(h=>'<button type="button" class="chip" data-hot="'+esc(h)+'">'+esc(h)+'</button>').join('')+'</div><p style="margin:14px 0 0;font-size:13px;color:var(--ink-3)">그래도 없으면 경영기획본부에 물어보세요.</p></div></div>';return;}
+  const catN=c=>(CATS.find(x=>x.no===c)||{}).n;
+  blk.innerHTML=head+'<div class="res"><div class="hd"><b>"'+esc(q)+'" 검색 결과</b><span class="cnt">'+res.length+'건 · 관련 높은 순</span><span style="margin-left:auto"></span><button type="button" class="chip" id="resX">처음 화면으로</button></div><ul>'+
+    res.map(r=>{const why=r.why.length?'키워드 일치: <b>'+r.why.map(esc).join('</b>, <b>')+'</b>':'';return itemHtml(r.d,{hl:ts,why:why+(why?' · ':'')+catN(r.d.c)});}).join('')+'</ul></div>';}
+let tmr;$('q').addEventListener('input',e=>{clearTimeout(tmr);tmr=setTimeout(()=>search(e.target.value),120);});
+$('sform').addEventListener('submit',e=>{e.preventDefault();search($('q').value);if(!$('resBlk').hidden)$('resBlk').scrollIntoView({behavior:'smooth',block:'start'});});
+$('qx').onclick=()=>{$('q').value='';search('');$('q').focus();};
+$('hot').insertAdjacentHTML('beforeend',HOT.map(h=>'<button type="button" class="chip" data-hot="'+esc(h)+'">'+esc(h)+'</button>').join(''));
+document.addEventListener('click',e=>{const h=e.target.closest('[data-hot]');if(h){$('q').value=h.dataset.hot;search(h.dataset.hot);$('resBlk').scrollIntoView({behavior:'smooth',block:'start'});return;}
+  if(e.target.id==='resX'){$('q').value='';search('');window.scrollTo({top:0,behavior:'smooth'});}});
+document.addEventListener('keydown',e=>{const a=document.activeElement;if(e.key==='/'&&!(a&&/INPUT|TEXTAREA/.test(a.tagName))){e.preventDefault();$('q').focus();}if(e.key==='Escape'&&a===$('q')){$('q').value='';search('');}});
+
+/* 사용법 안내창 */
+const dlg=$('how');const openHow=()=>{if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','');};
+$('howBtn').onclick=openHow;$('howX').onclick=()=>dlg.close();
+dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close();});
+
+/* 다크 모드 · 글자 크기 */
+const root=document.documentElement;
+function isDark(){const t=root.getAttribute('data-theme');return t?t==='dark':matchMedia('(prefers-color-scheme: dark)').matches;}
+function syncTheme(){const d=isDark();$('themeToggle').setAttribute('aria-pressed',d);$('themeIco').textContent=d?'☀':'☾';$('themeLbl').textContent=d?'일반 모드':'다크 모드';}
+$('themeToggle').onclick=()=>{const next=isDark()?'light':'dark';root.setAttribute('data-theme',next);try{localStorage.setItem('rbTheme',next);}catch(e){}syncTheme();};
+try{const t=localStorage.getItem('rbTheme');if(t)root.setAttribute('data-theme',t);}catch(e){}
+syncTheme();
+function setZ(b){root.style.setProperty('--z',b.dataset.z);document.querySelectorAll('[data-z]').forEach(x=>x.setAttribute('aria-pressed',x===b));try{localStorage.setItem('rbZ',b.dataset.z);}catch(e){}}
+document.querySelectorAll('[data-z]').forEach(b=>b.onclick=()=>setZ(b));
+try{const z=localStorage.getItem('rbZ');if(z){const b=document.querySelector('[data-z="'+z+'"]');if(b)setZ(b);}}catch(e){}
+
+/* 측면 섹션 점 */
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting)document.querySelectorAll('.side-dots a').forEach(a=>a.classList.toggle('active',a.dataset.sec===en.target.id));});},{rootMargin:'-40% 0px -55% 0px'});
+  ['top','situations','fields'].forEach(id=>io.observe($(id)));}
+
+renderSit();renderCats();renderStrips();
+})();
 </script>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
